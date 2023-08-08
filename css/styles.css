@@ -188,5 +188,8 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+#integrantes {
+  font-size: small;
+}
 
 /* CARD-PRODUCTS */
