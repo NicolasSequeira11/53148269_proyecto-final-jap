@@ -192,15 +192,7 @@ a.custom-card:hover {
   font-size: small;
 }
 
-/* CARD-PRODUCTS */
-div.card {
-  transition: transform 0.3s, z-index 0 0.3s;
-  position: relative;
-}
 
-div.card:hover{
-  background-color: lightsteelblue;
-  transform: scale(1.1);
-  z-index: 1;
-}
+/* CARD-PRODUCTS */
+
 
