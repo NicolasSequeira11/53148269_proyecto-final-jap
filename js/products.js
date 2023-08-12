@@ -29,7 +29,7 @@ const url = "https://japceibal.github.io/emercado-api/cats_products/101.json";
                 productDiv.appendChild(description);
 
                 const cost = document.createElement("p");
-                cost.textContent = "Precio: " + product.cost;
+                cost.textContent = "Precio: " + product.currency + "" + product.cost;
                 cost.classList.add("card-cost", "cost-products");
                 productDiv.appendChild(cost);
 
