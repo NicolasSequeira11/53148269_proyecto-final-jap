@@ -245,6 +245,64 @@ a.custom-card:hover {
 }
 
 
-/* CARD-PRODUCTS */
+    /* CARD-PRODUCTS */
 
 
+
+    /* LOGIN */
+    
+
+.formulario {
+  margin: auto;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  width: 600px;
+  max-width: 100%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+  
+}
+
+.formulario form .datos {
+  width: 95%;
+  height: 40px;
+  background: white;
+  border-radius: 4px;
+  border: 1px solid silver;
+  margin: 10px 0 18px 0;
+  padding: 0 10px;
+}
+
+.formulario form .btn {
+  margin-left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+  height: 34px;
+  border: none;
+  outline: none;
+  background: #0087F7;
+  cursor: pointer;
+  font-size: 15px;
+  text-transform: uppercase;
+  color: white;
+  border-radius: 14px;
+  transition: .3s;
+}
+
+.formulario form .btn:hover {
+  opacity: .7s;
+}
