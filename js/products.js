@@ -1,6 +1,7 @@
 const container = document.querySelector("#container-content"); // Constante que toma el contenedor div del HTML.
 
-const url = "https://japceibal.github.io/emercado-api/cats_products/101.json"; // URL de JSON con información de los autos.
+const id = localStorage.getItem("catID");
+const url = ("https://japceibal.github.io/emercado-api/cats_products/"+ id +".json"); // URL con los JSON de todas las categorías
 
     fetch(url)
         .then(response => response.json())
