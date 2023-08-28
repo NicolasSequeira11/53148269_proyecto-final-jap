@@ -13,6 +13,8 @@
 </head>
 
 <body>
+
+  <!-- MENU NAVEGACION -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -37,17 +39,41 @@
       </div>
     </div>
   </nav>
+  <!-- FIN MENU NAVEGACION -->
   <br>
-  <center>
-    <input type="search" id="buscar" placeholder="Buscar" onkeyup="filtrar()">
-  </center>
+
+  <!-- CONTENEDOR PRODUCTOS -->
   <main class="pb-5 container">
+
+    <!-- BUSCADOR -->
+    <div class="input-group rounded m-auto pt-5 w-75">
+      
+      <!-- Input buscador -->
+      <input type="search" id="buscar" class="form-control rounded" onkeyup="filtrar()"
+        placeholder="Buscar" aria-label="Search" aria-describedby="search-addon" />
+      <!-- Fin Input buscador -->
+
+      <!-- Icono buscador -->
+      <span class="input-group-text border-0" id="search-addon">
+        <i class="fas fa-search"></i>
+      </span>
+      <!-- Fin Icono buscador -->
+
+    </div>
+    <!-- FIN BUSCADOR -->
+
+    <!-- PRODUCTOS -->
     <div class="container container-products">
       <div class="row row-cols-1 row-cols-md-3 my-5 g-4 col-12 m-auto" id="container-content">
-
+       <!-- Contenido productos -->
       </div>
     </div>
+    <!-- FIN PRODUCTOS -->
+
   </main>
+  <!-- FIN CONTENEDOR PRODUCTOS -->
+
+  <!-- FOOTER  -->
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
