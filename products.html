@@ -7,6 +7,7 @@
   <title>eMercado - Todo lo que busques está aquí</title>
 
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
@@ -24,7 +25,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
-            <a class="nav-link active" href="index.html">Inicio</a>
+            <a class="nav-link" href="index.html">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="categories.html">Categorías</a>
@@ -40,16 +41,17 @@
     </div>
   </nav>
   <!-- FIN MENU NAVEGACION -->
+
   <br>
 
   <!-- CONTENEDOR PRODUCTOS -->
   <main class="pb-5 container">
 
     <!-- BUSCADOR -->
-    <div class="input-group rounded m-auto pt-5 w-75">
+    <div class="input-group rounded m-auto pt-4 w-75">
       
       <!-- Input buscador -->
-      <input type="search" id="buscar" class="form-control rounded" onkeyup="filtrar()"
+      <input type="search" id="buscar" class="form-control rounded" onkeyup="buscarProductos()"
         placeholder="Buscar" aria-label="Search" aria-describedby="search-addon" />
       <!-- Fin Input buscador -->
 
@@ -62,16 +64,50 @@
     </div>
     <!-- FIN BUSCADOR -->
 
-    <!-- PRODUCTOS -->
+
+    <!-- FILTROS PRODUCTOS -->
+    <div class="m-auto justify-content-center w-75 mt-4 d-flex row">
+
+      <!-- Filtro precio ascendente -->
+      <label id="ascendente" class="btn btn-light active mx-1 col-md-1">
+        <i class="bi bi-sort-numeric-down" style="font-size: 20px;"></i>
+      </label>
+
+      <!-- Filtro precio descendente -->
+      <label id="descendente" class="btn btn-light mx-1 col-md-1">
+        <i class="bi bi-sort-numeric-up-alt" style="font-size: 20px;"></i>
+      </label>
+
+      <!-- Filtro relevancia producto descendente -->
+      <label id="relevancia" class="btn btn-light mx-1 col-md-1">
+        <i class="bi bi-sort-down" style="font-size: 20px;"></i>
+      </label>
+
+      <!-- Filtro rango de precios -->
+      <input type="number" placeholder="Precio minimo" class="btn btn-light mx-1 col-md-3" id="precioMinimo">
+      <input type="number" placeholder="Precio máximo" class="btn btn-light mx-1 col-md-3" id="precioMaximo">
+
+      <!-- Boton filtrar rango de precios -->
+      <label id="rangoPrecio" class="btn btn-light mx-1 col-md-1">Filtrar</label>
+
+      <!-- Boton limpiar filtro rango de precios -->
+      <label id="limpiarFiltros" class="btn btn-light mx-1 col-md-1">Limpiar</label>
+
+    </div>
+    <!-- FIN FILTROS PRODUCTOS -->
+
+
+    <!-- LISTA DE PRODUCTOS -->
     <div class="container container-products">
-      <div class="row row-cols-1 row-cols-md-3 my-5 g-4 col-12 m-auto" id="container-content">
-       <!-- Contenido productos -->
+      <div class="row row-cols-1 row-cols-md-3 my-4 g-4 col-12 m-auto" id="container-content">
+       <!-- Contenido de productos -->
       </div>
     </div>
     <!-- FIN PRODUCTOS -->
 
   </main>
   <!-- FIN CONTENEDOR PRODUCTOS -->
+
 
   <!-- FOOTER  -->
   <footer class="text-muted">
@@ -84,6 +120,9 @@
       <p id="integrantes"> Integrantes: Bruno Maffei, Gabriel Falero, Joaquin Fernandez, Lara Fabricio, Martina Pereira, Mauricio Morales, Nicolas Sequeira, Santiago Nuñez, Tiffani Tellechea.</p>
     </div>
   </footer>
+  <!-- FIN FOOTER -->
+
+
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>

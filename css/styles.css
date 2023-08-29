@@ -112,6 +112,11 @@ footer p {
   left: 50%;
 }
 
+.btn:hover{
+  background-color: #212529;
+  color: white;
+}
+
 .cursor-active {
   cursor: pointer;
 }
@@ -247,9 +252,9 @@ a.custom-card:hover {
 
 .list-cat:hover {
   color:#000000;
-  background-color: lightgrey;
+  background-color: rgb(238, 238, 238);
   border: 2px solid lightgrey;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 

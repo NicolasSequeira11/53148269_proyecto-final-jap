@@ -1,7 +1,8 @@
 const form = document.getElementById("formulario");
 
-var ultimoSegmento = window.location.pathname.split('/').pop();//separo el final de la ruta en la que se esta parado
+var ultimoSegmento = window.location.pathname.split('/').pop(); //separo el final de la ruta en la que se esta parado
 
+// Validar inicio de sesión
 if (ultimoSegmento == 'login.html') {
     form.addEventListener('submit', function (event) {
         const datos = document.getElementsByClassName("datos");
@@ -14,6 +15,7 @@ if (ultimoSegmento == 'login.html') {
     });
 }
 
+// Verificar logueo
 function verificarLogueo() {
 
     if (ultimoSegmento !== 'login.html' && sessionStorage.getItem("logueo") !== "true") {
@@ -21,5 +23,6 @@ function verificarLogueo() {
         }
     
 }
-window.onload = verificarLogueo;
+
+window.onload = verificarLogueo; // Al cargar la página la primera función que carga es verificarLogueo
 
