@@ -352,3 +352,13 @@ form {
 .formulario form .btn:hover {
   opacity: .7s;
 }
+
+/* ALERTA ERROR FILTRO */
+
+.alert-error-filter{
+  text-align: center;
+  margin: 20vh auto 0;
+  color: white;
+  padding: 20px;
+  border-radius: 7px;
+}

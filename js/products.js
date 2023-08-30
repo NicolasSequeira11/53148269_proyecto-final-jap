@@ -19,6 +19,8 @@ const url = ("https://japceibal.github.io/emercado-api/cats_products/"+ id +".js
             // Función que muestra los productos
             function showProducts(array){
                 let content = "";
+            
+            if(array.length > 0){
                 array.forEach(product => {
                     content += 
                     `
@@ -34,6 +36,12 @@ const url = ("https://japceibal.github.io/emercado-api/cats_products/"+ id +".js
                     `;
                 container.innerHTML = content;
                 });
+                
+            } else {
+                // Alerta para cuando no se encuentran productos
+                container.innerHTML = 
+                    `<div class="alert-danger bg-danger alert-error-filter">No se encontraron productos</div>`;
+            }
             }
 
             showProducts(products);
