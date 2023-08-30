@@ -11,6 +11,7 @@ if (ultimoSegmento == 'login.html') {
             event.preventDefault();
             window.location.href = "index.html";
             sessionStorage.setItem("logueo", "true");
+            localStorage.setItem("usuario", datos[0].value);
         }
     });
 }
@@ -20,9 +21,20 @@ function verificarLogueo() {
 
     if (ultimoSegmento !== 'login.html' && sessionStorage.getItem("logueo") !== "true") {
             window.location.href = "login.html";
-        }
+    } else {
+        const display = document.getElementById("displayusuario");
+        const datos = localStorage.getItem("usuario");
+        display.innerHTML = datos;
+        display.setAttribute("href", "my-profile.html");
+        removeSesion.addEventListener("click", ()=>{
+            sessionStorage.removeItem("logueo");
+        
+        });
+    }
     
 }
+
+
 
 window.onload = verificarLogueo; // Al cargar la página la primera función que carga es verificarLogueo
 
