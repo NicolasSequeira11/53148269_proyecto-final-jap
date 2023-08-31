@@ -24,17 +24,16 @@ function verificarLogueo() {
     } else {
         const display = document.getElementById("displayusuario");
         const datos = localStorage.getItem("usuario");
-        display.innerHTML = datos;
+        
+        display.innerHTML = `<i class="bi bi-person-fill me-2" style="font-size: 20px"></i>` + datos;
+        
         display.setAttribute("href", "my-profile.html");
         removeSesion.addEventListener("click", ()=>{
             sessionStorage.removeItem("logueo");
-        
         });
     }
     
 }
-
-
 
 window.onload = verificarLogueo; // Al cargar la página la primera función que carga es verificarLogueo
 

@@ -16,16 +16,18 @@
 <body>
 
   <!-- MENU NAVEGACION -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
-    <div class="container">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+  <nav class="navbar navbar-expand-lg p-1">
+    <div class="container w-100">
+      <button class="navbar-toggler me-5 my-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <i class="bi bi-list" style="font-size: 40px;"></i>
       </button>
+      <a href="index.html" class="nav-logo d-none d-lg-flex" ><img src="img/logo-jap-2022.svg" alt=""></a>
+      <a href="index.html" class="nav-logo-mobile d-flex d-lg-none" ><img src="img/logo-jap-2022.svg" alt=""></a>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-between">
+        <ul class="navbar-nav justify-content-between">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+            <a class="nav-link active" href="index.html">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="categories.html">Categorías</a>
@@ -69,7 +71,7 @@
     <div class="m-auto justify-content-center w-75 mt-4 d-flex row">
 
       <!-- Filtro precio ascendente -->
-      <label id="ascendente" class="btn btn-light active mx-1 col-md-1">
+      <label id="ascendente" class="btn btn-light mx-1 col-md-1">
         <i class="bi bi-sort-numeric-down" style="font-size: 20px;"></i>
       </label>
 
@@ -84,8 +86,8 @@
       </label>
 
       <!-- Filtro rango de precios -->
-      <input type="number" placeholder="Precio minimo" class="btn btn-light mx-1 col-md-3" id="precioMinimo">
-      <input type="number" placeholder="Precio máximo" class="btn btn-light mx-1 col-md-3" id="precioMaximo">
+      <input type="number" placeholder="Precio minimo" class="btn btn-light mx-1 col-md-3 input-filter" id="precioMinimo">
+      <input type="number" placeholder="Precio máximo" class="btn btn-light mx-1 col-md-3 input-filter" id="precioMaximo">
 
       <!-- Boton filtrar rango de precios -->
       <label id="rangoPrecio" class="btn btn-light mx-1 col-md-1">Filtrar</label>
@@ -112,10 +114,7 @@
   <!-- FOOTER  -->
   <footer class="text-muted">
     <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      <p>Grupo 1 / Desarrollo Web Grupo 267 - 2023</p>
       <br>
       <p id="integrantes"> Integrantes: Bruno Maffei, Gabriel Falero, Joaquin Fernandez, Lara Fabricio, Martina Pereira, Mauricio Morales, Nicolas Sequeira, Santiago Nuñez, Tiffani Tellechea.</p>
     </div>
