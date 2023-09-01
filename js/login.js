@@ -28,6 +28,8 @@ function verificarLogueo() {
         display.innerHTML = `<i class="bi bi-person-fill me-2" style="font-size: 20px"></i>` + datos;
         
         display.setAttribute("href", "my-profile.html");
+        const removeSesion = document.getElementById("removeSesion");
+        
         removeSesion.addEventListener("click", ()=>{
             sessionStorage.removeItem("logueo");
         });

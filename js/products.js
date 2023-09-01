@@ -100,12 +100,12 @@ const url = ("https://japceibal.github.io/emercado-api/cats_products/"+ id +".js
                 let precioMin = document.getElementById("precioMinimo").value;
                 let precioMax = document.getElementById("precioMaximo").value;
 
-                let productosRangoPrecio =   
+                let productosRangoPrecio =      
                 products.filter((product) => product.cost >= precioMin && product.cost <= precioMax);
 
                 showProducts(productosRangoPrecio);
 
-            });        
+            });
 
 
             // Limpiar filtros
@@ -133,7 +133,7 @@ const url = ("https://japceibal.github.io/emercado-api/cats_products/"+ id +".js
             let card = document.getElementsByClassName("col-xl-4 col-12 col-md-6 col-lg-3 container-products");
             let nombres = document.getElementsByClassName("card-title title-products"); // Obtener el texto del elemento en mayusculas
             let descripciones = document.getElementsByClassName("card-description description-products");
-                
+            
             // Mostrar u ocultar el elemento según si coincide con el texto ingresado
             for(let i=0; i<nombres.length; i++){
                 let descripcion = descripciones[i].textContent.toUpperCase();
