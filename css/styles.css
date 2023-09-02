@@ -371,7 +371,7 @@ a.custom-card:hover {
 /* CARD-PRODUCTS */
 
 .div-products{
-  border-radius: 20px;
+  border-radius: 0 0 20px 20px;
   text-align: center;
 }
 
@@ -471,4 +471,33 @@ form {
   color: white;
   padding: 20px;
   border-radius: 7px;
+}
+
+/* PRODUCT INFO */
+
+.container-product-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0 40px;
+}
+
+.title-product-info{
+  margin: 15px 0;
+}
+
+.description-product-info{
+  margin: 0 0 50px 0;
+}
+
+.category-product-info{
+  margin: 15px 0;
+}
+
+.cost-product-info{
+  margin: 15px 0;
+}
+
+.soldCount-product-info{
+  margin: 15px 0;
 }

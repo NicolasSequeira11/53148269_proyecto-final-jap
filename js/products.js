@@ -1,4 +1,5 @@
-const container = document.querySelector("#container-content"); // Constante que toma el contenedor div del HTML.
+const container = document.getElementById("container-content"); // Constante que toma el contenedor div del HTML.
+
 const asc = document.getElementById("ascendente"); // Boton filtro precio ascendente
 const desc = document.getElementById("descendente"); // Boton filtro precio descendente
 const rel = document.getElementById("relevancia"); // Boton filtro relevancia descendente
@@ -6,25 +7,28 @@ const rangoPrecio = document.getElementById("rangoPrecio"); // Boton filtro rang
 const limpiarFiltros = document.getElementById("limpiarFiltros"); // Boton limpiar filtros
 
 const id = localStorage.getItem("catID");
-const url = ("https://japceibal.github.io/emercado-api/cats_products/"+ id +".json"); // URL con los JSON de todas las categorías
+const url = ("https://japceibal.github.io/emercado-api/cats_products/" + id + ".json"); // URL con los JSON de todas las categorías
 
+function setProductID(id) {
+    localStorage.setItem("productID", id); // Crea el localStorage con la key "productID"
+    window.location = "product-info.html" // Redirige a product-info.html
+}
 
         // FETCH
 
         fetch(url)
         .then(response => response.json())
         .then(data => {
-            let products = data.products; // Constante para trabajar sobre la info de cada producto.
+            let products = data.products; // Variable para acceder a la info de los productos.            
             
             // Función que muestra los productos
             function showProducts(array){
-                let content = "";
             
             if(array.length > 0){
                 array.forEach(product => {
-                    content += 
+                    container.innerHTML += 
                     `
-                    <div class="col-xl-4 col-12 col-md-6 col-lg-3 container-products">
+                    <div onclick="setProductID(${product.id})" class="col-xl-4 col-12 col-md-6 col-lg-3 cursor-active container-products">
                         <div class="card col-12 div-products">
                             <img class="card-image image-products" src="${product.image}">
                             <h2 class="card-title title-products">${product.name}</h2>
@@ -34,7 +38,6 @@ const url = ("https://japceibal.github.io/emercado-api/cats_products/"+ id +".js
                         </div>
                     </div>
                     `;
-                container.innerHTML = content;
                 });
                 
             } else {
