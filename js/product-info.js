@@ -1,11 +1,12 @@
 const containerProduct = document.getElementById("container-product"); // Constante que toma el contenedor div del HTML.
+const containerComment = document.getElementById("container-comments"); 
 
 
 const productID = localStorage.getItem("productID"); // Constante que toma el valor del localStorage productID
 const urlProduct = ("https://japceibal.github.io/emercado-api/products/" + productID + ".json"); // URL con los JSON de los productos
+const urlComment =  ("https://japceibal.github.io/emercado-api/products_comments/" + productID + ".json"); // URL con los JSON de los comentarios
 
-
-        // FETCH
+        // FETCH URLProduct
 
         fetch(urlProduct)
         .then(response => response.json())
@@ -62,7 +63,35 @@ const urlProduct = ("https://japceibal.github.io/emercado-api/products/" + produ
             console.error("Error al cargar los productos:", error);
         });
 
-        //FIN FETCH
+        //FIN FETCH URLProduct
 
+        //FETCH URLComment
+        let commentHTML = '';
 
+        fetch(urlComment)
+        .then(response => response.json())
+        .then(data => {
+            let commentInfo = data; // Variable para acceder a la info de cada producto.
 
+            commentInfo.forEach(element => {
+                commentHTML += `
+                <div class="comment">
+                    <p class=""><strong>${element.user}</strong> - ${element.dateTime} -
+            `
+                for(let i=1; i<=5; i++){
+                    if(i<=element.score){
+                        commentHTML += `<span class="fa fa-star checked"></span>`
+                    }else{
+                        commentHTML += `<span class="fa fa-star"></span>`
+                    }
+                }
+            
+                commentHTML += `    
+                    </p>
+                    <p class="desc">${element.description} </p>
+                </div>
+                `
+            });
+            containerComment.innerHTML += commentHTML;
+        
+        })
