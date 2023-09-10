@@ -501,3 +501,9 @@ form {
 .soldCount-product-info{
   margin: 15px 0;
 }
+
+/*COMMENTS*/
+.comment{
+  border: 1px solid rgb(202, 201, 201);
+}
+/*FIN COMMENTS*/
