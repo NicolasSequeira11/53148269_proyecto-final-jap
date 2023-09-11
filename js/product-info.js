@@ -75,8 +75,8 @@ const urlComment =  ("https://japceibal.github.io/emercado-api/products_comments
 
             commentInfo.forEach(element => {
                 commentHTML += `
-                <div class="comment">
-                    <p class=""><strong>${element.user}</strong> - ${element.dateTime} -
+                <div class="comment ps-4">
+                    <p class="py-2 m-auto mt-3"><strong>${element.user}</strong> - ${element.dateTime} -
             `
                 for(let i=1; i<=5; i++){
                     if(i<=element.score){
@@ -88,7 +88,7 @@ const urlComment =  ("https://japceibal.github.io/emercado-api/products_comments
             
                 commentHTML += `    
                     </p>
-                    <p class="desc">${element.description} </p>
+                    <p class="desc m-auto py-2 mb-3">${element.description} </p>
                 </div>
                 `
             });
