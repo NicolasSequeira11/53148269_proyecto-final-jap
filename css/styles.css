@@ -504,8 +504,17 @@ form {
 
 /*COMMENTS*/
 .comment{
-  width: 65%;
-  margin-left: 2%;
   border-bottom: 2px solid rgb(202, 201, 201, 0.5);
 }
+
+.form{
+  box-shadow: none;
+  
+}
+
+.btn-comment{
+  width: 25%;
+  border-radius: 0;
+}
+
 /*FIN COMMENTS*/

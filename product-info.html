@@ -52,19 +52,20 @@
         
       </div>
       <div class="row m-auto pt-5" id="container-comments">
-        <h5 class="mb-3 mt-3 ms-4">Comentarios</h5>
+        <h5 class="mb-3 mt-3 ms-1">Comentarios</h5>
         
       </div>
 
-      <div>
-        <h3>Dejanos un comentario:</h3>
-        <form id="commentForm">
+      <div class="row pt-4 mb-3 mt-3 ms-1 input-group" id="container-newComment">
+        <h5>Dejanos un comentario:</h5>
+        
+        <form class="form col-lg-7" id="commentForm">
           
-          <label for="comment">Comentario:</label>
-          <textarea id="comment" rows="4" cols="50" required></textarea>
+          <label for="comment" class="ms-1 mx-auto mb-2">Comentario:</label>
+          <textarea id="comment" rows="4" class="form-control ms-2" cols="50" required></textarea>
           
-          <label for="rating">Calificación:</label>
-          <select id="rating" name="rating">
+          <label for="rating" class="ms-1 mt-4 mx-auto mb-2">Calificación:</label>
+          <select id="rating" class="form-select ms-2 w-100" name="rating">
             <option value="1">1 estrella</option>
             <option value="2">2 estrellas</option>
             <option value="3">3 estrellas</option>
@@ -72,8 +73,9 @@
             <option value="5">5 estrellas</option>
           </select>
           
-          <input type="submit" value="Enviar">
-      </form>
+          <button class="btn ms-2 my-3 btn-comment" type="submit">Enviar</button> 
+        </form>
+      
       </div>
       
     </div>

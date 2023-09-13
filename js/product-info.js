@@ -16,8 +16,8 @@ const urlComment =  ("https://japceibal.github.io/emercado-api/products_comments
             // Mostrar info de productos en product-info.html
             containerProduct.innerHTML = 
             `
-            <div class="col-12 d-flex">
-                <div class="py-5 card col-7">
+            <div class="col-12 row">
+                <div class="py-5 card col-12 col-lg-7">
                     
                     <div id="carouselExample" class="carousel slide">
                         <div class="carousel-inner">
@@ -46,7 +46,7 @@ const urlComment =  ("https://japceibal.github.io/emercado-api/products_comments
 
                 </div>
 
-                <div class="col-5 container-product-info">
+                <div class="col-12 col-lg-5 container-product-info">
                     <h2 class="card-title title-product-info"><strong>${productInfo.name}</strong></h2>
                     <p class="card-description description-product-info">${productInfo.description}</p>
                     <p class="card-description category-product-info"><strong>Categoría</strong> <br> ${productInfo.category}</p>
@@ -75,7 +75,7 @@ const urlComment =  ("https://japceibal.github.io/emercado-api/products_comments
 
             commentInfo.forEach(element => {
                 commentHTML += `
-                <div class="comment ps-4">
+                <div class="comment col-lg-7 ps-4">
                     <p class="py-2 m-auto mt-3"><strong>${element.user}</strong> - ${element.dateTime} -
             `
                 for(let i=1; i<=5; i++){
