@@ -97,14 +97,14 @@ const urlComment =  ("https://japceibal.github.io/emercado-api/products_comments
         })
         // AGREGAR NUEVO COMENTARIO
 
-        const form = document.getElementById("commentForm"); // Obtener el formulario.
+        const formComment = document.getElementById("commentForm"); // Obtener el formulario.
         const url = "https://jsonplaceholder.typicode.com/users"; // API para enviar datos del formulario
 
         let hoy = new Date(); // Variable que obtiene la fecha actual.
         let date = hoy.toLocaleString("en-US"); // Variable para formatear la fecha.
 
         // Evento para añadir el nuevo comentario.
-        form.addEventListener("submit", e => {
+        formComment.addEventListener("submit", e => {
             e.preventDefault();
 
             const opinion = document.getElementById("comment").value; // Obtener contenido de la opinión.
