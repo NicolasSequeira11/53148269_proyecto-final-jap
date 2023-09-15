@@ -95,3 +95,60 @@ const urlComment =  ("https://japceibal.github.io/emercado-api/products_comments
             containerComment.innerHTML += commentHTML;
         
         })
+        // AGREGAR NUEVO COMENTARIO
+
+        const form = document.getElementById("commentForm"); // Obtener el formulario.
+        const url = "https://jsonplaceholder.typicode.com/users"; // API para enviar datos del formulario
+
+        let hoy = new Date(); // Variable que obtiene la fecha actual.
+        let date = hoy.toLocaleString("en-US"); // Variable para formatear la fecha.
+
+        // Evento para añadir el nuevo comentario.
+        form.addEventListener("submit", e => {
+            e.preventDefault();
+
+            const opinion = document.getElementById("comment").value; // Obtener contenido de la opinión.
+            const puntuacion = document.getElementById("rating").value; // Obtener valor de la puntuación.
+            const datos = localStorage.getItem("usuario"); // Obtener el nombre de usuario del login.
+            
+            let newCommentHTML = ''; // Crear contenedor vacío en donde añadir nuevos comentarios.
+
+            fetch(url, {
+                method: "POST",
+                body: JSON.stringify({
+                    score: puntuacion,
+                    description: opinion,
+                    user: datos,
+                    dateTime: date,
+                }),
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+            .then(response => response.json())
+            .then(datos => {
+
+                //Añadir elementos HTML del nuevo comentario
+                newCommentHTML += 
+                    `
+                    <div class="comment ps-4">
+                        <p class="py-2 m-auto mt-3"><strong>${datos.user}</strong> - ${datos.dateTime} -
+                    `
+                    for(let i=1; i<=5; i++){
+                        if(i<=datos.score){
+                            newCommentHTML += `<span class="fa fa-star checked"></span>`
+                        }else{
+                            newCommentHTML += `<span class="fa fa-star"></span>`
+                        }
+                    }
+                    newCommentHTML += 
+                    ` 
+                        </p>
+                        <p class="desc m-auto py-2 mb-3">${datos.description} </p>
+                    </div>
+                    `
+                    containerComment.innerHTML += newCommentHTML;
+            })
+        });
+
+        // FIN AGREGAR NUEVO COMENTARIO
