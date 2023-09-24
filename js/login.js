@@ -32,7 +32,7 @@ function verificarLogueo() {
                                     <li><a class="dropdown-item" href="cart.html">Mi Carrito</a></li>
                                     <li><a class="dropdown-item" href="my-profile.html">Mi Perfil</a></li>
                                     <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                                    <li><a class="dropdown-item" href="login.html">Cerrar sesión</a></li>
                                 </ul>
                             </div>`;
         
