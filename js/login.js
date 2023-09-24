@@ -24,9 +24,17 @@ function verificarLogueo() {
         const display = document.getElementById("displayusuario");
         const datos = localStorage.getItem("usuario");
         
-        display.innerHTML = `<i class="bi bi-person-fill me-2" style="font-size: 20px"></i>` + datos;
-        
-        display.setAttribute("href", "my-profile.html");
+        display.innerHTML = `<div class="dropdown">
+                                <a class="userDropDown userDropDown-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-person-fill me-2" style="font-size: 20px"></i>` + datos +
+                                `<a/>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <li><a class="dropdown-item" href="cart.html">Mi Carrito</a></li>
+                                    <li><a class="dropdown-item" href="my-profile.html">Mi Perfil</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                                </ul>
+                            </div>`;
         
         removeSesion.addEventListener("click", ()=>{
             sessionStorage.removeItem("logueo");
