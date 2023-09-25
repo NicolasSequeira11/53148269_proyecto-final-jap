@@ -5,7 +5,6 @@ const url =
   "https://japceibal.github.io/emercado-api/cats_products/" + id + ".json"; // URL con los JSON de todas las categorías
 
   
-
 /* ---------- FETCH ---------- */
 
 fetch(url)

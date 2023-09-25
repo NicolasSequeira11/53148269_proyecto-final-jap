@@ -48,18 +48,37 @@
 
   <main>
     <div class="container">
-      <div class="row m-auto justify-content-center pt-5" id="container-product">
-        
-      </div>
-      <div class="row m-auto pt-5" id="container-comments">
-        <h5 class="mb-3 mt-3 ms-1">Comentarios</h5>
-        
+
+      <!-- Info del producto -->
+      <div class="row m-auto justify-content-center my-5" id="container-product">
+        <!-- Contenido info del producto -->
       </div>
 
-      <div class="row pt-4 mb-3 mt-3 ms-1 input-group" id="container-newComment">
-        <h5>Dejanos un comentario:</h5>
+      <!-- Productos relacionados -->
+      <div class="row mt-5 mb-5">
+        <h5 class="m-auto text-center">Productos similares</h5>
+
+        <div class="container pt-4 px-5 col-10 col-sm-12 col-md-12">
+          <button id="prev" class="control btn">
+            <i class="bi bi-arrow-left"></i>
+          </button>
+
+          <div id="prodsRelContainer" class="slider">
+            <!-- Contenido productos relacionados -->
+          </div>
+          
+          <button id="next" class="control btn">
+            <i class="bi bi-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- COMENTARIOS -->
+      <div class="row pt-4 mb-3 input-group" id="container-newComment">
+        <h5 class="text-center">Comentarios</h5>
         
-        <form class="form col-lg-7" id="commentForm">
+        <!-- Añadir comentario -->
+        <form class="form col-lg-10 m-auto" id="commentForm">
           
           <label for="comment" class="ms-1 mx-auto mb-2">Comentario:</label>
           <textarea id="comment" rows="4" class="form-control ms-2" cols="50" required></textarea>
@@ -77,15 +96,14 @@
         </form>
       
       </div>
-      
-    </div>
 
-    <div>
-      <h5>Productos Relacionados</h5>
-      <div id="prodsRelContainer">
-
+      <!-- Comentarios -->
+      <div class="row pt-4 mb-3" id="container-comments">
+        <!-- Contenido comentarios -->
       </div>
+
     </div>
+
   </main>
 
 

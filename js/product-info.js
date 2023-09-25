@@ -60,7 +60,7 @@ document.getElementById("commentForm").addEventListener("submit", (e) => {
     .then((datos) => {
       /* Añadir elementos HTML del nuevo comentario */
       newCommentHTML += `
-                    <div class="comment ps-4">
+                    <div class="comment col-12 col-lg-11 m-auto ps-4">
                         <p class="py-2 m-auto mt-3"><strong>${datos.user}</strong> - ${datos.dateTime} -
                     `;
       for (let i = 1; i <= 5; i++) {
@@ -93,8 +93,8 @@ fetch (urlCatProd)
 /* Mostrar info del producto */
 function showProductInfo(array) {
   containerProduct.innerHTML = `
-    <div class="col-12 row">
-        <div class="py-5 card col-12 col-lg-7">
+    <div class="col-12 row card flex-row">
+        <div class="m-auto col-12 col-lg-7">
                     
             <div id="carouselExample" class="carousel slide">
                 <div class="carousel-inner">
@@ -112,18 +112,16 @@ function showProductInfo(array) {
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon btn btn-light bg-primary" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
+                  <i class="bi bi-arrow-left btn-primary btn-carousel"></i>
                 </button>
                 <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                    <span class="carousel-control-next-icon btn btn-light bg-primary" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
+                  <i class="bi bi-arrow-right btn-primary btn-carousel"></i>
                 </button>
             </div>
 
         </div>
 
-        <div class="col-12 col-lg-5 container-product-info">
+        <div class="col-12 col-lg-5 m-auto container-product-info">
             <h2 class="card-title title-product-info"><strong>${array.name}</strong></h2>
             <p class="card-description description-product-info">${array.description}</p>
             <p class="card-description category-product-info"><strong>Categoría</strong> <br> ${array.category}</p>
@@ -139,7 +137,7 @@ function showProductInfo(array) {
 function showComments(array) {
   array.forEach((element) => {
     commentHTML += `
-              <div class="comment col-lg-7 ps-4">
+              <div class="comment col-lg-11 m-auto ps-4">
                   <p class="py-2 m-auto mt-3"><strong>${element.user}</strong> - ${element.dateTime} -
           `;
 
@@ -183,13 +181,24 @@ function setProductID(id) {
   window.location = "product-info.html"; // Redirige a product-info.html
 }
 
-/* Agregar inner HTML */
+/* Mostrar productos relacionados */
 
 function showProductsRela(element){
   containerProdsRel.innerHTML +=`
-  <div onclick="setProductID(${element.id})">
-    <img src="${element.image}">
-    <p>${element.name}</p>
+  <div onclick="setProductID(${element.id})" class="productRel-container col-10 col-md-3">
+    <img src="${element.image}" class="col-12">
+    <p class="m-auto pt-3">${element.name}</p>
+    <p class="m-auto pb-3">U$S${element.cost}</p>
   </div>
   `;
 }
+
+/* Controles para el carousel de productos relacionados */
+
+document.getElementById("prev").addEventListener("click", ()=>{
+  document.getElementById("prodsRelContainer").scrollLeft -= 350;
+});
+
+document.getElementById("next").addEventListener("click", ()=>{
+  document.getElementById("prodsRelContainer").scrollLeft += 350;
+});
