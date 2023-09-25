@@ -5,6 +5,10 @@ const productID = localStorage.getItem("productID"); // Obtener valor del localS
 const urlProduct = "https://japceibal.github.io/emercado-api/products/" + productID + ".json"; // URL con los JSON de los productos
 const urlComment = "https://japceibal.github.io/emercado-api/products_comments/" + productID + ".json"; // URL con los JSON de los comentarios
 
+const productCatID = localStorage.getItem("catID"); // Obtener valor del localStorage catID
+const containerProdsRel = document.getElementById("prodsRelContainer"); //Obtener el div para agregar los productos relacionados al producto
+const urlCatProd = "https://japceibal.github.io/emercado-api/cats_products/" + productCatID + ".json"; // URL con los JSON de los productos relacionados
+
 /* ---------- FETCH PRODUCT INFO ---------- */
 
 fetch(urlProduct)
@@ -151,4 +155,33 @@ function addStars(data) {
       commentHTML += `<span class="fa fa-star"></span>`;
     }
   }
+}
+
+fetch (urlCatProd)
+    .then((response) => response.json())
+    .then((data) => {
+      let prodsRela = data.products; // Obtener la info de cada producto
+      getProdsRela (prodsRela);
+    });
+
+function getProdsRela (arr){
+  arr.forEach(element => {
+    if (element.id != productID){
+      showProductsRela(element)
+    }
+  });
+}
+
+function showProductsRela(element){
+  containerProdsRel.innerHTML +=`
+  <div onclick="setProductID(${element.id})">
+  <img src="${element.image}">
+  <p>${element.name}</p>
+  </div>
+  `
+}
+
+function setProductID(id) {
+  localStorage.setItem("productID", id); // Crea el localStorage con la key "productID"
+  window.location = "product-info.html"; // Redirige a product-info.html
 }
