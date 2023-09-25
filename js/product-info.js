@@ -79,6 +79,15 @@ document.getElementById("commentForm").addEventListener("submit", (e) => {
     });
 });
 
+/* ---------- FETCH PRODUCTOS RELACIONADOS ---------- */
+
+fetch (urlCatProd)
+    .then((response) => response.json())
+    .then((data) => {
+      let prodsRela = data.products; // Obtener la info de cada producto 
+      getProdsRela (prodsRela);
+    });
+
 /* ---------- FUNCIONES ---------- */
 
 /* Mostrar info del producto */
@@ -157,31 +166,30 @@ function addStars(data) {
   }
 }
 
-fetch (urlCatProd)
-    .then((response) => response.json())
-    .then((data) => {
-      let prodsRela = data.products; // Obtener la info de cada producto
-      getProdsRela (prodsRela);
-    });
+/* Filtrar productos relacionados */
 
 function getProdsRela (arr){
   arr.forEach(element => {
     if (element.id != productID){
-      showProductsRela(element)
+      showProductsRela(element);
     }
   });
 }
 
-function showProductsRela(element){
-  containerProdsRel.innerHTML +=`
-  <div onclick="setProductID(${element.id})">
-  <img src="${element.image}">
-  <p>${element.name}</p>
-  </div>
-  `
-}
+/* Crear un localStorage para guardar el id de cada producto y usarlo al clickear en el */
 
 function setProductID(id) {
   localStorage.setItem("productID", id); // Crea el localStorage con la key "productID"
   window.location = "product-info.html"; // Redirige a product-info.html
+}
+
+/* Agregar inner HTML */
+
+function showProductsRela(element){
+  containerProdsRel.innerHTML +=`
+  <div onclick="setProductID(${element.id})">
+    <img src="${element.image}">
+    <p>${element.name}</p>
+  </div>
+  `;
 }
