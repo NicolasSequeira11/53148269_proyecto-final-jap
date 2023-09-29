@@ -93,7 +93,7 @@ fetch (urlCatProd)
 /* Mostrar info del producto */
 function showProductInfo(array) {
   containerProduct.innerHTML = `
-    <div class="col-12 row card flex-row">
+    <div class="col-12 row card product-info-container flex-row">
         <div class="m-auto col-12 col-lg-7">
                     
             <div id="carouselExample" class="carousel slide">

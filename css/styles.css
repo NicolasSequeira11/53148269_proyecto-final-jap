@@ -1,3 +1,25 @@
+/* Variables CSS */
+:root{
+  --color-white-light: #ffffff; /* Color blanco principal */
+  --color-black-light: #212529; /* Color negro principal */
+  --color-hover-white-light: #eeeeee; /* Color blanco en hover principal */
+  --color-div-light: #ffffff; /* Color blanco para los divs principal */
+  --color-div-hover-light: #dee2e6; /* Color blanco en hover para los divs principal */
+  --color-blue: #0087F7; /* Color para iconos, botones y links principal */
+}
+
+body{
+  background-color: var(--color-white-light);
+}
+
+.icon{
+  color: var(--color-black-light);
+}
+
+.icon:hover{
+  color: var(--color-blue);
+}
+
 .jumbotron,
 .card-body,
 .container,
@@ -28,6 +50,8 @@ nav a {
   }
 }
 
+/* BANNER DEL HOME */
+
 .jumbotron {
   height: 50vh;
   padding: 5em inherit;
@@ -37,7 +61,7 @@ nav a {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  color: black;
+  color: var(--color-black-light);
   font-weight: bold;
 }
 
@@ -67,6 +91,8 @@ nav a {
   font-size: 38px;
 }
 
+/* FOOTER */
+
 footer {
   padding-top: 3rem;
   padding-bottom: 3rem;
@@ -77,7 +103,7 @@ footer p {
 }
 
 .site-header a {
-  color: white;
+  color: var(--color-white-light);
   transition: ease-in-out color .15s;
 }
 
@@ -86,9 +112,9 @@ footer p {
 }
 
 .dropzone {
-  border: 2px dashed #0087F7;
+  border: 2px dashed var(--color-blue);
   border-radius: 5px;
-  background: white;
+  background: var(--color-white-light);
 }
 
 .img-fit {
@@ -129,10 +155,10 @@ footer p {
   width: 51px;
   height: 51px;
   margin: 6px;
-  border: 6px solid #fff;
+  border: 6px solid var(--color-white-light);
   border-radius: 50%;
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: #fff transparent transparent transparent;
+  border-color: var(--color-white-light) transparent transparent transparent;
 }
 
 .lds-ring div:nth-child(1) {
@@ -196,22 +222,22 @@ a.custom-card:hover {
 /* BOTONES */
 
 .boton{
-  background-color: #f8f9fa;
-  border: 2px solid #0087F7;
+  background-color: var(--color-white-light);
+  border: 2px solid var(--color-blue);
   text-align: center;
   text-decoration: none;
   width: 20%;
   margin: auto;
   padding: 10px;
-  color: #0087F7;
+  color: var(--color-blue);
   border-radius: 45px;
   transition: all 0.5s;
 }
 
 .boton:hover{
-  border: 2px solid #0087F7;
-  background-color: #0087F7;
-  color: #f8f9fa;
+  border: 2px solid var(--color-blue);
+  background-color: var(--color-blue);
+  color: var(--color-white-light);
   box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.49);
   -webkit-box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.20);
   -moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.49);
@@ -220,31 +246,47 @@ a.custom-card:hover {
 
 .btn{
   border: 1px solid #21252950;
-  color: #212529;
+  color: var(--color-black-light);
+  background-color: var(--color-div-light);
 }
 
 .btn:hover{
-  background-color: #0087F7;
-  border: 1px solid #0087F7;
-  color: white;
+  background-color: var(--color-blue);
+  border: 1px solid var(--color-blue);
+  color: var(--color-white-light);
 }
 
 .input-filter::placeholder{
-  color: #212529;
+  color: var(--color-black-light)
 }
 
 .input-filter:hover::placeholder{
-  color: white;
+  color: var(--color-white-light);
+}
+
+.search{
+  border: 1px solid #21252950;
+  background-color: var(--color-div-light);
+}
+
+.search::placeholder{
+  color: var(--color-black-light);
+}
+
+.search-span-icon{
+  background-color: var(--color-div-light);
+  margin: auto;
+  padding: 10px 10px;
 }
 
 @keyframes boton {
   0%{
-      outline: 0px solid #0087F7;
+      outline: 0px solid var(--color-blue);
       outline-offset: 0px;
   }
 
   50%{
-      outline: 5px solid #0087F750;
+      outline: 5px solid var(--color-blue);
       outline-offset: 2px;
   }
 
@@ -259,7 +301,7 @@ a.custom-card:hover {
   position: sticky;
   top: 0;
   z-index: 4000;
-  background-color: #f8f9fa;
+  background-color: var(--color-white-light);
   box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.49);
   -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.20);
   -moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.49);
@@ -290,13 +332,26 @@ a.custom-card:hover {
   margin: auto 20px;
 }
 
+.nav-user{
+  background-color: var(--color-div-light);
+}
+
+.nav-user-link{
+  color: var(--color-black-light);
+}
+
+.nav-user-link:hover{
+  background-color: var(--color-white-light);
+  color: var(--color-black-light);
+}
+
 .nav-link{
   width: 100%;
-  color: #212529;
+  color: var(--color-black-light);
 }
 
 .nav-link:hover{
-  color: #0087F7;
+  color: var(--color-blue);
 }
 
 .nav-link::after{
@@ -308,7 +363,7 @@ a.custom-card:hover {
   left: 0;
   height: 2px;
   width: 100%;
-  background-color: #0087F7;
+  background-color: var(--color-blue);
   
   /*animacion de derecha a izquierda*/
   transform-origin: right;
@@ -322,31 +377,48 @@ a.custom-card:hover {
   transform: scaleX(1);
 }
 
+.user-link{
+  color: var(--color-black-light);
+}
+
+.user-link:hover{
+  color: var(--color-blue);
+}
+
+.user-link:hover > .icon{
+  color: var(--color-blue);
+}
+
 /* CATEGORIAS INDEX */
 
 .titulo-cat {
-  color: #000000;
+  color: var(--color-black-light);
   font-weight: 500;
   text-align: center;
 }
 
 .card-text{
   margin: -20px 0;
+  color: var(--color-black-light);
 }
 
 .card-option .card-body {
   text-align: center;
 }
 
+.card-img-top{
+  border-radius: 20px 20px 0 0;
+}
+
 .card-option{
-  background-color: ghostwhite;
+  background-color: var(--color-div-light);
   transition: transform 0.3s, z-index 0 0.3s;
   position: relative;
   border-radius: 20px;
 }
 
 .card-option:hover{
-  background-color: rgb(238, 238, 238);
+  background-color: var(--color-div-hover-light);
   transform: scale(1.03);
   z-index: 1;
 }
@@ -354,16 +426,18 @@ a.custom-card:hover {
 /* CATEGORIAS */
 
 .list-cat{
-  color: rgb(50, 50, 50);
+  color: var(--color-black-light);
+  background-color: var(--color-div-light);
   padding: 10px;
+  margin: 5px 0;
   border-radius: 10px;
   transition: background-color 0.3s, color 0.3s;
 }
 
 .list-cat:hover {
-  color:#000000;
-  background-color: rgb(238, 238, 238);
-  border: 2px solid lightgrey;
+  color:var(--color-black-light);
+  background-color: var(--color-div-hover-light);
+  border: 1px solid var(--color-hover-white-light);
   font-size: 17px;
 }
 
@@ -373,10 +447,11 @@ a.custom-card:hover {
 .div-products{
   border-radius: 0 0 20px 20px;
   text-align: center;
+  background-color: var(--color-div-light);
 }
 
 .div-products:hover{
-  background-color: rgb(238, 238, 238);
+  background-color: var(--color-div-light);
   transform: scale(1.03);
 }
 
@@ -384,29 +459,32 @@ a.custom-card:hover {
   margin: auto;
   padding: 25px 0 10px;
   font-size: 30px;
+  color: var(--color-black-light);
 }
 
 .description-products{
   margin: auto;
   padding: 10px 25px;
   font-size: 15px;
+  color: var(--color-black-light);
 }
 
 .cost-products{
   margin: auto;
   padding: 10px 0;
   font-size: 15px;
+  color: var(--color-black-light);
 }
 
 .soldCount-products{
   margin: auto;
   padding: 10px 0 20px;
   font-size: 15px;
+  color: var(--color-black-light);
 }
 
 
 /* LOGIN */
-    
 
 .formulario {
   margin: auto;
@@ -423,7 +501,7 @@ a.custom-card:hover {
 form {
   display: flex;
   flex-direction: column;
-  background: white;
+  background: var(--color-white-light);
   text-align: center;
   width: 100%;
   height: 100%;
@@ -436,7 +514,7 @@ form {
 .formulario form .datos {
   width: 95%;
   height: 40px;
-  background: white;
+  background: var(--color-white-light);
   border-radius: 4px;
   border: 1px solid silver;
   margin: 10px 0 18px 0;
@@ -450,11 +528,11 @@ form {
   height: 34px;
   border: none;
   outline: none;
-  background: #0087F7;
+  background: var(--color-blue);
   cursor: pointer;
   font-size: 15px;
   text-transform: uppercase;
-  color: white;
+  color: var(--color-white-light);
   border-radius: 14px;
   transition: .3s;
 }
@@ -468,12 +546,16 @@ form {
 .alert-error-filter{
   text-align: center;
   margin: 20vh auto 0;
-  color: white;
+  color: var(--color-white-light);
   padding: 20px;
   border-radius: 7px;
 }
 
 /* PRODUCT INFO */
+
+.product-info-container{
+  background-color: var(--color-div-light);
+}
 
 .container-product-info{
   display: flex;
@@ -484,54 +566,73 @@ form {
 
 .title-product-info{
   margin: 15px 0;
+  color: var(--color-black-light);
 }
 
 .description-product-info{
   margin: 0 0 20px 0;
+  color: var(--color-black-light);
 }
 
 .category-product-info{
   margin: 15px 0;
+  color: var(--color-black-light);
 }
 
 .cost-product-info{
   margin: 15px 0;
+  color: var(--color-black-light);
 }
 
 .soldCount-product-info{
   margin: 15px 0;
+  color: var(--color-black-light);
 }
 
 /*COMMENTS*/
+
 .comment{
   border-bottom: 2px solid rgb(202, 201, 201, 0.5);
+  color: var(--color-black-light);
+}
+
+.comment-textarea{
+  background-color: var(--color-div-light);
+  border: 2px solid var(--color-div-light);
+}
+
+.comment-select{
+  background-color: var(--color-div-light);
+  border: 2px solid var(--color-div-light);
+  color: var(--color-black-light);
 }
 
 .form{
   box-shadow: none;
-  
+  color: var(--color-black-light);
 }
 
 .btn-comment{
   width: 25%;
+  color: var(--color-black-light);
+  border: 1px solid var(--color-div-light);
   border-radius: 0;
 }
-
-/*FIN COMMENTS*/
 
 /* PRODUCTOS RELACIONADOS */
 
 .productRel-container{
   margin: auto 10px;
   text-align: center;
+  background-color: var(--color-div-light);
+  color: var(--color-black-light);
   border-radius: 0 0 15px 15px;
-  border: 1px solid rgb(224, 224, 224);
   cursor: pointer;
   overflow: hidden;
 }
 
 .productRel-container:hover{
-  background-color: rgb(238, 238, 238);
+  background-color: var(--color-div-hover-light);
 }
 
 #prev{
