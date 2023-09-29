@@ -2,12 +2,13 @@ const darkModeToggle = document.getElementById("btnDarkMode");
 const logo = document.getElementById("img-logo");
 const logoMobile = document.getElementById("img-logo-mobile");
 
-// Verificar si el modo oscuro está habilitado en el localStorage
+/* Verificar si el modo oscuro está habilitado en el localStorage */
 let isDarkMode = localStorage.getItem("darkMode") === "enabled";
 
-// Función para habilitar el modo oscuro
 
+/* Función para habilitar el dark mode */
 function enableDarkMode() {
+
   /* Cambiar valor de las variables de colores */
   document.documentElement.style.setProperty("--color-white-light", "#212529");
   document.documentElement.style.setProperty("--color-black-light", "#dee2e6");
@@ -23,11 +24,12 @@ function enableDarkMode() {
   /* Cambiar valor del localStorage a "enabled" */
   localStorage.setItem("darkMode", "enabled");
   isDarkMode = true;
+
 }
 
-// Función para deshabilitar el modo oscuro
-
+/* Función para deshabilitar el modo oscuro */
 function disableDarkMode() {
+
   /* Cambiar valor de las variables de colores */
   document.documentElement.style.setProperty("--color-white-light", "#ffffff");
   document.documentElement.style.setProperty("--color-black-light", "#212529");
@@ -43,9 +45,10 @@ function disableDarkMode() {
   /* Cambiar valor del localStorage a "enabled" */
   localStorage.setItem("darkMode", "disabled");
   isDarkMode = false;
+
 }
 
-// Toggle de modo oscuro
+/* Alternancia del dark mode */
 function toggleDarkMode() {
   if (isDarkMode) {
     disableDarkMode();
@@ -54,10 +57,10 @@ function toggleDarkMode() {
   }
 }
 
-// Asignar eventos al botón de alternancia
+/* Asignar evento al botón de alternancia */
 darkModeToggle.addEventListener("click", toggleDarkMode);
 
-// Aplicar el modo oscuro si está habilitado en el localStorage
+/* Aplicar el modo oscuro si está habilitado en el localStorage */
 if (isDarkMode) {
   enableDarkMode();
 }

@@ -41,6 +41,7 @@ function verificarLogueo() {
         </ul>
       </div>`;
 
+    display.removeAttribute("href");
     removeSesion.addEventListener("click", () => {
       sessionStorage.removeItem("logueo");
     });
