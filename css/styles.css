@@ -596,14 +596,16 @@ form {
   color: var(--color-black-light);
 }
 
+.comment-title{
+  color: var(--color-black-light);
+}
+
 .comment-textarea{
   background-color: var(--color-div-light);
-  border: 2px solid var(--color-div-light);
 }
 
 .comment-select{
   background-color: var(--color-div-light);
-  border: 2px solid var(--color-div-light);
   color: var(--color-black-light);
 }
 
@@ -615,7 +617,6 @@ form {
 .btn-comment{
   width: 25%;
   color: var(--color-black-light);
-  border: 1px solid var(--color-div-light);
   border-radius: 0;
 }
 
