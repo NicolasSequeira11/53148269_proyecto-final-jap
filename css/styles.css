@@ -498,7 +498,7 @@ a.custom-card:hover {
   max-width: 100%;
 }
 
-form {
+.form-comment {
   display: flex;
   flex-direction: column;
   background: var(--color-white-light);
@@ -511,7 +511,7 @@ form {
   
 }
 
-.formulario form .datos {
+.formulario .form-comment .datos {
   width: 95%;
   height: 40px;
   background: var(--color-white-light);
@@ -521,7 +521,7 @@ form {
   padding: 0 10px;
 }
 
-.formulario form .btn {
+.formulario .form-comment .btn {
   margin-left: 50%;
   transform: translateX(-50%);
   width: 140px;
@@ -537,7 +537,7 @@ form {
   transition: .3s;
 }
 
-.formulario form .btn:hover {
+.formulario .form-comment .btn:hover {
   opacity: .7s;
 }
 
@@ -674,4 +674,14 @@ form {
   padding: 10px;
   border-radius: 50%;
   width: 45px;
+}
+
+/* Form carrito */
+
+.tituloCarrito{
+  margin: 1.5rem 0;
+}
+
+.cartDiv{
+  color:  var(--color-black-light);
 }
