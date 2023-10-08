@@ -7,7 +7,7 @@ fetch(urlCart)
     .then((response) => response.json())
     .then((data) => {
         containerCart.innerHTML += `
-        <table class="table table-light table-borderless">
+        <table class="table table-white table-borderless">
         <thead>
             <tr>
                 <th scope="col"></th>
