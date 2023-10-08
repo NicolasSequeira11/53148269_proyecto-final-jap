@@ -7,7 +7,6 @@ fetch(urlCart)
     .then((response) => response.json())
     .then((data) => {
         containerCart.innerHTML += `
-        <div class="d-flex flex-column">
         <table class="table table-light table-borderless">
         <thead>
             <tr>
@@ -28,7 +27,6 @@ fetch(urlCart)
             </tr>
         </tbody>
     </table>
-    </div>  
         `;
     })
     .catch((error) => {
