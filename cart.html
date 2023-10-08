@@ -49,11 +49,15 @@
 
   <main>
     <div class="col-12 container cartDiv">
-      <div class="col mt-3 d-flex flex-column" id="containerCart">
+      <div class="row">
+
+      <div class="col col-md-8 mt-3 d-flex flex-column" id="containerCart">
    
       </div>    
 
-      <div class="col d-flex flex-column">
+      <div class="col-md-4 order-md-first">
+
+      <div class="d-flex flex-column">
         <h2 class="tituloCarrito">Tipo de envío</h2>
         <span>
           <input type="radio" name="tipoEnvio" id="premiumRad">
@@ -70,7 +74,7 @@
       </div>
 
       <div>
-        <h2 class="col tituloCarrito">Dirección de envío</h2>
+        <h2 class="tituloCarrito">Dirección de envío</h2>
         <form class="d-flex flex-column">
           <label for="calle">Calle</label>
           <input type="text" id="calle" name="calle" class="col-12 col-md-6">
@@ -81,6 +85,9 @@
         </form>
       </div>
 
+      </div>
+    
+      </div>  
     </div>
   </main>
 
