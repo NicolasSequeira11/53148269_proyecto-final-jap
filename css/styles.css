@@ -685,3 +685,9 @@ a.custom-card:hover {
 .cartDiv{
   color:  var(--color-black-light);
 }
+
+/*Cart Products*/
+
+.cartProducts{
+  color:  var(--color-black-light);
+}
