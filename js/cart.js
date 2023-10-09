@@ -19,7 +19,7 @@ fetch(urlCart)
         </thead>
         <tbody>
             <tr>
-                <th scope="row" class="d-flex justify-content-center"><img width="100px" src=${data.articles[0].image}></th>
+                <th scope="row" class="d-flex justify-content-center"><img class="img-fluid" width="120px" src=${data.articles[0].image}></th>
                 <td>${data.articles[0].name}</td>
                 <td>${data.articles[0].currency} ${data.articles[0].unitCost}</td>
                 <td><input type="number" min="0" id="count" value="${data.articles[0].count}" class="col-12 col-md-6"></td>
