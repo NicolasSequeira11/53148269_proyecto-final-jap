@@ -8,6 +8,7 @@ fetch(urlCart)
   .then((data) => {
     const articles = data.articles;
     showTotal(articles);
+    showNewArticle();
     showArticles(articles);
   })
   .catch((error) => {
@@ -55,6 +56,47 @@ function showArticles(array) {
     containerCart.innerHTML += `<div class="alert-danger bg-danger alert-error-filter">No se encontraron productos</div>`;
   }
 }
+
+
+
+function showNewArticle() {
+    const getName = localStorage.getItem("productName");
+    const getPrice = localStorage.getItem("productPrice");
+    const getImage = localStorage.getItem("productImage");
+
+      containerCart.innerHTML += `
+          <hr>
+
+          <div class="article-container">
+
+            <div class="col-2">
+              <img src="${getImage}" class="col-12">
+            </div>
+
+            <div class="col-10 d-flex m-auto">
+            
+              <div class="d-flex col-6 col-md-7">
+                <p class="my-auto ps-2">${getName}</p>
+              </div>
+
+              <div class="d-flex col-1 col-md-2">
+                <input type="number" class="m-auto col-md-8 col-12 d-flex article-input" 
+                  min="0" id="count" value="1"></p>
+              </div>
+
+              <div class="d-flex col-5 col-md-3">
+                <p class="m-auto ps-2">${getPrice} USD</p>
+              </div>
+
+            </div>
+                          
+          </div>
+
+
+    `;
+
+}
+
 
 function showTotal(array) {
 
