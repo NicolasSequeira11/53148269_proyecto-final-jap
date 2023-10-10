@@ -4,7 +4,7 @@
   --color-black-light: #212529; /* Color negro principal */
   --color-hover-white-light: #eeeeee; /* Color blanco en hover principal */
   --color-div-light: #ffffff; /* Color blanco para los divs principal */
-  --color-div-hover-light: #dee2e6; /* Color blanco en hover para los divs principal */
+  --color-div-hover-light: #fafafa; /* Color blanco en hover para los divs principal */
   --color-blue: #0087F7; /* Color para iconos, botones y links principal */
 }
 
@@ -676,18 +676,56 @@ a.custom-card:hover {
   width: 45px;
 }
 
+/* CARRITO DE COMPRAS */
+
 /* Form carrito */
 
 .tituloCarrito{
   margin: 1.5rem 0;
 }
 
+.cart-form-input{
+  background-color: var(--color-div-light);
+  border: 1px solid gray;
+  display: flex;
+  color: var(--color-black-light);
+}
+
+.cart-form-input:focus{
+  outline: none;
+}
+
 .cartDiv{
+  margin: auto;
   color:  var(--color-black-light);
 }
 
 /*Cart Products*/
 
 .cartProducts{
-  color:  var(--color-black-light);
+  color: var(--color-black-light);
+}
+
+.cart-container{
+  display: flex;
+  margin: auto;
+  color: var(--color-black-light);
+  background-color: var(--color-div-hover-light);
+  border-radius: 10px;
+}
+
+.article-container{
+  display: flex;
+}
+
+.article-input{
+  background-color: var(--color-black-light);
+  color: var(--color-div-light);
+  text-align: center;
+  border-radius: 15px;
+  border: none;
+}
+
+.article-input:focus{
+  outline: none;
 }

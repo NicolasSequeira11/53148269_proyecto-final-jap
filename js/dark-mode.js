@@ -34,7 +34,7 @@ function disableDarkMode() {
   document.documentElement.style.setProperty("--color-white-light", "#ffffff");
   document.documentElement.style.setProperty("--color-black-light", "#212529");
   document.documentElement.style.setProperty("--color-div-light", "#ffffff");
-  document.documentElement.style.setProperty("--color-div-hover-light", "#dee2e6");
+  document.documentElement.style.setProperty("--color-div-hover-light", "#fafafa");
   document.documentElement.style.setProperty("--color-text-hover-light", "#212529");
   document.documentElement.style.setProperty("--color-blue", "#0087F7");
 
