@@ -589,6 +589,24 @@ a.custom-card:hover {
   color: var(--color-black-light);
 }
 
+.button-product-info{
+  background-color: var(--color-blue);
+  color: var(--color-white-light);
+  border-radius: 15px;
+  padding: 10px 0;
+  margin: 0 0 10px;
+  border: none;
+  opacity: 0.9;
+}
+
+.button-product-info:hover{
+  opacity: 1;
+}
+
+.button-product-info:active{
+  opacity: 0.8;
+}
+
 /*COMMENTS*/
 
 .comment{
