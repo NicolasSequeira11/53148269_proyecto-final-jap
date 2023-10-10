@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>eMercado - Todo lo que busques está aquí</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- MENU NAVEGACION -->
+  <nav class="navbar navbar-expand-lg p-1">
+    <div class="container w-100">
+      <button class="navbar-toggler me-5 my-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="bi bi-list" style="font-size: 40px;"></i>
+      </button>
+      <a href="index.html" class="nav-logo d-none d-lg-flex" ><img src="img/logo-jap-2022.svg" id="img-logo" alt=""></a>
+      <a href="index.html" class="nav-logo-mobile d-flex d-lg-none" ><img src="img/logo-jap-2022.svg" id="img-logo-mobile" alt=""></a>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav justify-content-between">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="categories.html">Categorías</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sell.html">Vender</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="displayusuario" href="login.html">Iniciar Sesión</a>
+          </li>
+          <li class="nav-item cursor-active" id="btnDarkMode">
+            <i class="bi bi-moon-stars-fill icon"></i>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- FIN MENU NAVEGACION -->
+
+
+  <main>
+    <div class="container">
+
+      <!-- Info del producto -->
+      <div class="row m-auto justify-content-center my-5" id="container-product">
+        <!-- Contenido info del producto -->
+      </div>
+
+      <!-- Productos relacionados -->
+      <div class="row mt-5 mb-5">
+        <h5 class="m-auto text-center">Productos similares</h5>
+
+        <div class="container pt-4 px-5 col-10 col-sm-12 col-md-12">
+          <button id="prev" class="control btn">
+            <i class="bi bi-arrow-left"></i>
+          </button>
+
+          <div id="prodsRelContainer" class="slider">
+            <!-- Contenido productos relacionados -->
+          </div>
+          
+          <button id="next" class="control btn">
+            <i class="bi bi-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- COMENTARIOS -->
+      <div class="row pt-4 mb-3 input-group" id="container-newComment">
+        <h5 class="text-center comment-title">Comentarios</h5>
+        
+        <!-- Añadir comentario -->
+        <form class="form col-lg-10 m-auto form-comment" id="commentForm">
+          
+          <label for="comment" class="ms-1 mx-auto mb-2">Comentario:</label>
+          <textarea id="comment" rows="4" class="form-control comment-textarea ms-2" cols="50" required></textarea>
+          
+          <label for="rating" class="ms-1 mt-4 mx-auto mb-2">Calificación:</label>
+          <select id="rating" class="form-select comment-select ms-2 w-100" name="rating">
+            <option value="1">1 estrella</option>
+            <option value="2">2 estrellas</option>
+            <option value="3">3 estrellas</option>
+            <option value="4">4 estrellas</option>
+            <option value="5">5 estrellas</option>
+          </select>
+          
+          <button class="btn ms-2 my-3 btn-comment" type="submit">Enviar</button> 
+        </form>
+      
+      </div>
+
+      <!-- Comentarios -->
+      <div class="row pt-4 mb-3" id="container-comments">
+        <!-- Contenido comentarios -->
+      </div>
+
+    </div>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer class="text-muted">
+    <div class="container">
+      <p>Grupo 1 / Desarrollo Web Grupo 267 - 2023</p>
+      <br>
+      <p id="integrantes"> Integrantes: Bruno Maffei, Gabriel Falero, Joaquin Fernandez, Lara Fabricio, Martina Pereira, Mauricio Morales, Nicolas Sequeira, Santiago Nuñez, Tiffani Tellechea.</p>
+    </div>
+  </footer>
+  <!-- FIN FOOTER -->
+
+
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/dark-mode.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/product-info.js"></script>
+  <script src="js/login.js"></script>
+</body>
+
+</html>
