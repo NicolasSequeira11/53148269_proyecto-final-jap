@@ -128,11 +128,7 @@ function showProductInfo(array) {
             <p class="card-soldcount soldCount-product-info"><strong>Cantidad de vendidos</strong> <br> ${array.soldCount}</p>
             <p class="card-cost cost-product-info"><strong>Precio</strong> <br> ${array.currency} ${array.cost}</p>
             <button class="button-product-info" 
-              onclick="
-                setProductName('${array.name}');
-                setProductPrice('${array.cost}');
-                setProductImage('${array.images[0]}');"
-                >Añadir al carrito</button>
+              onclick="addToCart('${array.name}', ${array.cost}, '${array.images[0]}');">Añadir al carrito</button>
         </div>
     </div>
   `;
@@ -180,18 +176,26 @@ function getProdsRela (arr){
   });
 }
 
-/* Tomar valores del producto por boton */
-function setProductName(name){
-  localStorage.setItem("productName", name);
+function addToCart(name, cost, image) {
+  // Obtener el carrito actual desde el `localStorage`
+  let currentCart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  // Crear un nuevo artículo
+  const newArticle = {
+      name: name,
+      unitCost: cost,
+      currency: 'USD',
+      image: image,
+      count: 1 
+  };
+
+  // Agregar el nuevo artículo al carrito
+  currentCart.push(newArticle);
+
+  // Guardar el carrito actualizado en el `localStorage`
+  localStorage.setItem('cart', JSON.stringify(currentCart));
 }
 
-function setProductPrice(price){
-  localStorage.setItem("productPrice", price);
-}
-
-function setProductImage(img){
-  localStorage.setItem("productImage", img);
-}
 
 /* Crear un localStorage para guardar el id de cada producto y usarlo al clickear en el */
 

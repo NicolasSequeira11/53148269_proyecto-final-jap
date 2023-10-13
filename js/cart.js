@@ -6,23 +6,25 @@ console.log(containerCart);
 fetch(urlCart)
   .then((response) => response.json())
   .then((data) => {
-    const articles = data.articles;
-    showTotal(articles);
-    showArticles(articles);
+    const articles = data.articles; // Datos de la API
+    const localStorageCart = JSON.parse(localStorage.getItem('cart')); // Datos del localStorage
+    const allArticles = articles.concat(localStorageCart); // Datos del API + localStorage
+
+    showTotal(allArticles);
+    showArticles(allArticles);
   })
   .catch((error) => {
     console.error("Error al cargar los productos:", error);
   });
 
-
 function showArticles(array) {
-
+  
   if (array.length > 0) {
     array.forEach((article) => {
       containerCart.innerHTML += `
       <hr>
 
-      <div class="article-container">
+      <div class="article-container" data-unitCost="${article.unitCost}">
 
         <div class="col-2">
           <img src="${article.image}" class="col-12">
@@ -35,81 +37,44 @@ function showArticles(array) {
           </div>
 
           <div class="d-flex col-1 col-md-2">
-            <input type="number" class="m-auto col-md-8 col-12 d-flex article-input" 
+            <input type="number" class="m-auto col-md-8 col-12 d-flex article-input count" 
               min="0" id="count" value="${article.count}"></p>
           </div>
 
           <div class="d-flex col-5 col-md-3">
-            <p class="m-auto ps-2">${article.unitCost} ${article.currency}</p>
+            <p class="m-auto ps-2 article-price">${article.unitCost} ${article.currency}</p>
           </div>
 
         </div>
                           
       </div>`;
     });
-
-    showNewArticle();
   } else {
-    // Alerta para cuando no se encuentran productos
     containerCart.innerHTML += `<div class="alert-danger bg-danger alert-error-filter">No se encontraron productos</div>`;
   }
-}
-
-function showNewArticle() {
-    const getName = localStorage.getItem("productName");
-    const getPrice = localStorage.getItem("productPrice");
-    const getImage = localStorage.getItem("productImage");
-
-    if(getName || getPrice || getImage){
-      containerCart.innerHTML += `
-      <hr>
-
-      <div class="article-container">
-
-        <div class="col-2">
-          <img src="${getImage}" class="col-12">
-        </div>
-
-        <div class="col-10 d-flex m-auto">
-            
-          <div class="d-flex col-6 col-md-7">
-            <p class="my-auto ps-2">${getName}</p>
-          </div>
-
-          <div class="d-flex col-1 col-md-2">
-            <input type="number" class="m-auto col-md-8 col-12 d-flex article-input" 
-              min="0" id="count" value="1"></p>
-          </div>
-
-          <div class="d-flex col-5 col-md-3">
-            <p class="m-auto ps-2">${getPrice} USD</p>
-          </div>
-
-        </div>
-                          
-      </div>
-    `;
-    }
 }
 
 function showTotal(array) {
 
   if (array.length > 0) {
-    array.forEach((article) => {
+      containerTotal.innerHTML = ''; // Limpia el contenido actual
+
+      // Calcula el total del carrito
+      const total = array.reduce((acc, article) => acc + article.unitCost * article.count, 0);
+
       containerTotal.innerHTML += `
-        <div class="article-container d-flex">
-          <div class="d-flex col-6">
-            <p class="my-auto">Total</p>
-          </div>
-          <div class="d-flex col-6">
-            <p class="d-flex col-12 justify-content-end my-auto">
-              ${article.unitCost} ${article.currency}</p>
-          </div>
-        </div>
-                      `;
-    });
+          <div class="article-container d-flex">
+              <div class="d-flex col-6">
+                  <p class="my-auto">Total</p>
+              </div>
+              <div class="d-flex col-6">
+                  <p class="d-flex col-12 justify-content-end my-auto">
+                      ${total.toFixed(2)} USD
+                  </p>
+              </div>
+          </div>`;
   } else {
-    // Alerta para cuando no se encuentran productos
-    containerTotal.innerHTML += `<div class="alert-danger bg-danger alert-error-filter">No se encontraron productos</div>`;
+      containerTotal.innerHTML = `<div class="alert-danger bg-danger alert-error-filter">No se encontraron productos</div>`;
   }
 }
+
