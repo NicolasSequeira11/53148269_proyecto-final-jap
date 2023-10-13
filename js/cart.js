@@ -84,7 +84,7 @@ function updatePrice(element) {
   const unitCost = parseFloat(articleContainer.getAttribute('data-unitCost'));
 
   // Obtiene el nuevo valor de cantidad desde el input
-  const newQuantity = parseInt(element.value, 10);
+  const newQuantity = parseInt(element.value);
 
   // Calcula el nuevo precio multiplicando la cantidad por el precio unitario
   const newPrice = (unitCost * newQuantity).toFixed(2);
