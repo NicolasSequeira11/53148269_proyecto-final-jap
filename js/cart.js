@@ -1,7 +1,11 @@
 const urlCart = "https://japceibal.github.io/emercado-api/user_cart/25801.json"; // URL con los JSON de los productos
 const containerCart = document.getElementById("containerCart"); // Contenedor del carrito
-const containerTotal = document.getElementById("cart-total"); // Contenedor del total del carrito
 
+// Calcular el total inicial
+let initialTotal = 0;
+function calculateInitialTotal(array) {
+  initialTotal = array.reduce((acc, article) => acc + article.unitCost * article.count, 0);
+}
 
 fetch(urlCart)
   .then((response) => response.json())
@@ -9,9 +13,9 @@ fetch(urlCart)
     const articles = data.articles; // Datos de la API
     const localStorageCart = JSON.parse(localStorage.getItem('cart')); // Datos del localStorage
     const allArticles = articles.concat(localStorageCart); // Datos del API + localStorage
-
-    showTotal(allArticles);
+    
     showArticles(allArticles);
+    totalCart();
 
     /* Evento para limpiar el carrito */
     const btnClearCart = document.getElementById("btnClearCart");
@@ -73,6 +77,7 @@ function showArticles(array) {
   }
 }
 
+// Actualiza el precio del producto según sus cantidades
 function updatePrice(element) {
   // Encuentra el elemento padre del input
   const articleContainer = element.closest('.article-container');
@@ -91,31 +96,34 @@ function updatePrice(element) {
 
   // Actualiza el elemento que muestra el precio
   priceElement.textContent = `${newPrice} USD`;
+
+  totalCart();
 }
 
-function showTotal(array) {
 
-  if (array.length > 0) {
-      containerTotal.innerHTML = ''; // Limpia el contenido actual
 
-      // Calcula el total del carrito
-      const total = array.reduce((acc, article) => acc + article.unitCost * article.count, 0);
+// Actualiza el precio total del carrito
+function totalCart() {
+  // Encuentra todos los elementos de precio de artículos
+  const priceArticles = document.querySelectorAll('.article-price');
 
-      containerTotal.innerHTML += `
-          <div class="article-container d-flex">
-              <div class="d-flex col-6">
-                  <p class="my-auto">Total</p>
-              </div>
-              <div class="d-flex col-6">
-                  <p class="d-flex col-12 justify-content-end my-auto">
-                      ${total.toFixed(2)} USD
-                  </p>
-              </div>
-          </div>
-          <button class="col-12 mt-3 btn bg-danger text-white" id="btnClearCart">Limpiar carrito</button>`;
-  } else {
-      containerTotal.innerHTML = `<div class="alert-danger bg-danger alert-error-filter">No se encontraron productos</div>`;
-  }
+  // Inicializar el total del carrito con la suma del precio de los articulos en el carrito
+  let total = initialTotal;
+
+  // Calcular el nuevo total sumando los precios de todos los artículos
+  priceArticles.forEach(priceElement => {
+    total += parseFloat(priceElement.textContent);
+  });
+
+  // Actualizar el elemento que muestra el total del carrito
+  const containerTotal = document.getElementById("cart-total");
+  containerTotal.innerHTML = 
+    `<div class="m-auto d-flex justify-content-between">
+      <p class="my-auto">Subtotal</p>
+      <p class="my-auto">${total.toFixed(2)} USD</p>
+    </div>`;
 }
+
+
 
 
