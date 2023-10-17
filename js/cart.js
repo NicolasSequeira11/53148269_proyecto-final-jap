@@ -1,11 +1,11 @@
 const urlCart = "https://japceibal.github.io/emercado-api/user_cart/25801.json"; // URL con los JSON de los productos
 const containerCart = document.getElementById("containerCart"); // Contenedor del carrito
 
-// Calcular el total inicial
-let initialTotal = 0;
-function calculateInitialTotal(array) {
-  initialTotal = array.reduce((acc, article) => acc + article.unitCost * article.count, 0);
-}
+const premium = document.getElementById("premiumRad"); // input 
+const express = document.getElementById("expressRad");
+const standard = document.getElementById("standardRad");
+
+
 
 fetch(urlCart)
   .then((response) => response.json())
@@ -17,22 +17,6 @@ fetch(urlCart)
     showArticles(allArticles);
     totalCart();
 
-    /* Evento para limpiar el carrito */
-    const btnClearCart = document.getElementById("btnClearCart");
-
-    btnClearCart.addEventListener("click", ()=>{
-      localStorage.removeItem("cart");
-
-      // Limpiar la representación visual de los elementos del carrito
-      containerCart.innerHTML = ''; // Borrar todos los articulos
-      containerTotal.innerHTML = ''; // Borrar el total
-
-      // Añadir un mensaje indicando que el carrito está vacío
-      containerCart.innerHTML = 
-        `<div class="bg-danger text-white text-center p-3 rounded">
-          El carrito está vacío
-        </div>`;
-    });
   })
   .catch((error) => {
     console.error("Error al cargar los productos:", error);
@@ -77,6 +61,29 @@ function showArticles(array) {
   }
 }
 
+// Calcular el total inicial
+let initialTotal = 0;
+function calculateInitialTotal(array) {
+  initialTotal = array.reduce((acc, article) => acc + article.unitCost * article.count, 0);
+}
+
+function typePrices(total){
+  let shippingCost = 0;
+  if(premium.checked){
+    shippingCost = total * 0.15;
+  } else if (express.checked){
+    shippingCost = total * 0.07;
+  } else if (standard.checked){
+    shippingCost = total * 0.05;
+  }
+  return shippingCost;
+}
+
+// Eventos para inputs Tipo de envío
+premium.addEventListener("change", totalCart);
+express.addEventListener("change", totalCart);
+standard.addEventListener("change", totalCart);
+
 // Actualiza el precio del producto según sus cantidades
 function updatePrice(element) {
   // Encuentra el elemento padre del input
@@ -100,8 +107,6 @@ function updatePrice(element) {
   totalCart();
 }
 
-
-
 // Actualiza el precio total del carrito
 function totalCart() {
   // Encuentra todos los elementos de precio de artículos
@@ -115,15 +120,24 @@ function totalCart() {
     total += parseFloat(priceElement.textContent);
   });
 
+  let newTotal = total + typePrices(total);
+
   // Actualizar el elemento que muestra el total del carrito
   const containerTotal = document.getElementById("cart-total");
   containerTotal.innerHTML = 
-    `<div class="m-auto d-flex justify-content-between">
+    `<div class="m-auto mb-3 d-flex justify-content-between">
       <p class="my-auto">Subtotal</p>
       <p class="my-auto">${total.toFixed(2)} USD</p>
-    </div>`;
-}
+    </div>
 
+    <div class="m-auto my-3 d-flex justify-content-between">
+      <p class="my-auto">Envio</p>
+      <p class="my-auto">${typePrices(total).toFixed(2)} USD</p>
+    </div>
 
-
-
+    <div class="m-auto mt-3 d-flex justify-content-between">
+      <p class="my-auto">Total</p>
+      <p class="my-auto">${newTotal.toFixed(2)} USD</p>
+    </div>
+    `;
+} 

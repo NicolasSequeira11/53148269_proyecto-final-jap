@@ -8,6 +8,10 @@
   --color-blue: #0087F7; /* Color para iconos, botones y links principal */
 }
 
+input[type=radio]:focus{
+  outline: none;
+}
+
 body{
   background-color: var(--color-white-light);
 }
