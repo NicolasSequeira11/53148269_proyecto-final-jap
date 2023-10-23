@@ -141,3 +141,53 @@ function totalCart() {
     </div>
     `;
 } 
+
+
+(() => {
+  'use strict'
+
+  const forms = document.querySelectorAll('.needs-validation');
+
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      const tarjet = document.getElementById("tarjeta");
+      const trans = document.getElementById("transferencia");
+
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+        
+        if(tarjet.checked){
+          showRequired(document.getElementById("numTarjeta"));
+          showRequired(document.getElementById("cvv"));
+          showRequired(document.getElementById("vencTarjeta"));
+          deleteRequired(document.getElementById("numCuenta"));
+        }else if(trans.checked){
+          deleteRequired(document.getElementById("numTarjeta"));
+          deleteRequired(document.getElementById("cvv"));
+          deleteRequired(document.getElementById("vencTarjeta"));
+          showRequired(document.getElementById("numCuenta"));
+        }
+      }else{
+        document.getElementById("cartDiv").innerHTML += `
+      <div class="alert alert-success mt-3" role="alert">
+        ¡Has comprado con exito!
+      </div>
+      `;
+      }
+     
+      form.classList.add('was-validated')
+      }, false)
+  })
+
+})()
+
+function showRequired(elem){
+  elem.setAttribute("required", "required");
+}
+
+function deleteRequired(elem){
+  elem.removeAttribute("required");
+}
+
+
