@@ -174,8 +174,9 @@ function totalCart() {
         ¡Has comprado con exito!
       </div>
       `;
+        form.classList.remove("was-validated");
       }
-     
+
       form.classList.add('was-validated')
       }, false)
   })
