@@ -66,9 +66,6 @@ function showArticles(array) {
       
       document.querySelectorAll('#btnCartDelete').forEach(function (button) {
         button.addEventListener('click', function (event) {
-          // Aquí puedes acceder al artículo asociado al botón de eliminación y eliminarlo.
-          const articleId = event.target.getAttribute('data-article-id');
-      
           // Llama a una función para eliminar el artículo del carrito.
           eliminarArticuloDelCarrito(article.id);
           location.reload();
@@ -173,7 +170,7 @@ function totalCart() {
 
     <div class="m-auto my-3 d-flex justify-content-between">
       <p class="my-auto">Envio</p>
-      <p class="my-auto">${typePrices(total)} USD</p>
+      <p class="my-auto">${typePrices(total).toFixed(2)} USD</p>
     </div>
 
     <div class="m-auto mt-3 d-flex justify-content-between">
