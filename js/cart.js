@@ -5,16 +5,12 @@ const premium = document.getElementById("premiumRad"); // input
 const express = document.getElementById("expressRad");
 const standard = document.getElementById("standardRad");
 
-
-
 fetch(urlCart)
   .then((response) => response.json())
   .then((data) => {
-    const articles = data.articles; // Datos de la API
     const localStorageCart = JSON.parse(localStorage.getItem('cart')); // Datos del localStorage
-    const allArticles = articles.concat(localStorageCart); // Datos del API + localStorage
     
-    showArticles(allArticles);
+    showArticles(localStorageCart);
     totalCart();
 
   })
@@ -29,20 +25,32 @@ function showArticles(array) {
       containerCart.innerHTML += `
       <hr>
       <div class="article-container" data-unitCost="${article.unitCost}">
-        <div class="col-2">
-          <img src="${article.image}" class="col-12">
-        </div>
-        <div class="col-10 d-flex m-auto">
-          <div class="d-flex col-6 col-md-7">
-            <p class="my-auto ps-2">${article.name}<br>${article.unitCost} USD</p>
+        <div class="col-12 d-flex flex-wrap m-auto">
+
+          <div class="col-12 col-md-6 justify-content-center pb-2 pb-md-0 d-flex">
+            <div class="d-flex col-6 col-md-4">
+              <img src="${article.image}" class="col-12">
+            </div>
+            <div class="d-flex col-6 justify-content-center col-md-8">
+              <p class="my-auto col-12 ps-5 ps-md-2">${article.name}<br>${article.unitCost} USD</p>
+            </div>
           </div>
-          <div class="d-flex col-1 col-md-2">
-            <input type="number" class="m-auto col-md-8 col-12 d-flex article-input count" 
-              min="0" value="${article.count}" data-article-id="${article.id}">
+
+          <div class="col-12 col-md-6 justify-content-center pt-2 pt-md-0 d-flex">
+            <div class="d-flex col-2 col-md-4 justify-content-center my-auto">
+              <input type="number" class="m-auto col-md-8 col-12 d-flex article-input count" 
+                min="0" value="${article.count}" data-article-id="${article.id}">
+            </div>
+            <div class="d-flex col-4 col-md-6 justify-content-center my-auto">
+              <p class="m-auto article-price">${(article.unitCost * article.count)} ${article.currency}</p>
+            </div>
+            <div class="d-flex col-4 col-md-2 justify-content-end my-auto">
+              <button class="btn bg-danger" id="btnCartDelete" data-article-id="${article.id}">
+                <i class="bi bi-trash-fill text-white m-auto"></i>
+              </button>
+            </div>
           </div>
-          <div class="d-flex col-5 col-md-3">
-            <p class="m-auto ps-2 article-price">${(article.unitCost * article.count).toFixed(2)} ${article.currency}</p>
-          </div>
+
         </div>
       </div>`;
 
@@ -55,9 +63,42 @@ function showArticles(array) {
           updatePrice(event.target);
         });
       });
+      
+      document.querySelectorAll('#btnCartDelete').forEach(function (button) {
+        button.addEventListener('click', function (event) {
+          // Aquí puedes acceder al artículo asociado al botón de eliminación y eliminarlo.
+          const articleId = event.target.getAttribute('data-article-id');
+      
+          // Llama a una función para eliminar el artículo del carrito.
+          eliminarArticuloDelCarrito(article.id);
+          location.reload();
+        });
+      });
     });
   } else {
-    containerCart.innerHTML += `<div class="alert-danger bg-danger alert-error-filter">No se encontraron productos</div>`;
+    containerCart.innerHTML += `<div class="alert-danger bg-danger alert-error-filter m-auto mt-2 mb-4 w-100">El carrito esta vacío</div>`;
+  }
+}
+
+function eliminarArticuloDelCarrito(articleId) {
+  // Obtener el array de artículos del carrito del localStorage
+  const carrito = JSON.parse(localStorage.getItem('cart')) || [];
+
+  // Encontrar el índice del artículo a eliminar en el array 
+  const articleIndex = carrito.findIndex((article) => article.id === articleId);
+
+  if (articleIndex !== -1) {
+    // Eliminar el artículo del array 
+    carrito.splice(articleIndex, 1);
+
+    // Actualizar el localStorage con el carrito modificado
+    localStorage.setItem('cart', JSON.stringify(carrito));
+
+    // Eliminar la representación del artículo en la página
+    const articleContainer = document.querySelector(`[data-article-id="${articleId}"]`);
+    if (articleContainer) {
+      articleContainer.remove();
+    }
   }
 }
 
@@ -99,7 +140,7 @@ function updatePrice(element) {
   const newQuantity = parseInt(element.value);
 
   // Calcula el nuevo precio multiplicando la cantidad por el precio unitario
-  const newPrice = (unitCost * newQuantity).toFixed(2);
+  const newPrice = (unitCost * newQuantity);
 
   // Actualiza el elemento que muestra el precio
   priceElement.textContent = `${newPrice} USD`;
@@ -127,17 +168,17 @@ function totalCart() {
   containerTotal.innerHTML = 
     `<div class="m-auto mb-3 d-flex justify-content-between">
       <p class="my-auto">Subtotal</p>
-      <p class="my-auto">${total.toFixed(2)} USD</p>
+      <p class="my-auto">${total} USD</p>
     </div>
 
     <div class="m-auto my-3 d-flex justify-content-between">
       <p class="my-auto">Envio</p>
-      <p class="my-auto">${typePrices(total).toFixed(2)} USD</p>
+      <p class="my-auto">${typePrices(total)} USD</p>
     </div>
 
     <div class="m-auto mt-3 d-flex justify-content-between">
       <p class="my-auto">Total</p>
-      <p class="my-auto">${newTotal.toFixed(2)} USD</p>
+      <p class="my-auto">${newTotal} USD</p>
     </div>
     `;
 } 
