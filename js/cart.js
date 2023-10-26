@@ -1,10 +1,6 @@
 const urlCart = "https://japceibal.github.io/emercado-api/user_cart/25801.json"; // URL con los JSON de los productos
 const containerCart = document.getElementById("containerCart"); // Contenedor del carrito
 
-const premium = document.getElementById("premiumRad"); // input
-const express = document.getElementById("expressRad");
-const standard = document.getElementById("standardRad");
-
 fetch(urlCart)
   .then((response) => response.json())
   .then((data) => {
@@ -123,6 +119,11 @@ function typePrices(total) {
   return shippingCost;
 }
 
+// Inputs tipo de envío
+const premium = document.getElementById("premiumRad");
+const express = document.getElementById("expressRad");
+const standard = document.getElementById("standardRad");
+
 // Eventos para inputs Tipo de envío
 premium.addEventListener("change", totalCart);
 express.addEventListener("change", totalCart);
@@ -185,42 +186,66 @@ function totalCart() {
     `;
 }
 
-  // VALIDACIÓN FORMULARIO CARRITO
+  /* --- VALIDACIÓN FORMULARIO CARRITO --- */
 
 (() => {
   "use strict";
 
-  const forms = document.querySelectorAll(".needs-validation"); // Obtener formulario
-  const tarjet = document.getElementById("tarjeta"); // Obtener metodo de pago tarjeta de credito
-  const trans = document.getElementById("transferencia"); // Obtener metodo de pago transferencia
-  const alertMetodoPago = document.getElementById("alert-metodoPago"); // Alerta metodo de pago
+   /* --- VALIDACIÓN METODO DE PAGO --- */
+   const forms = document.querySelectorAll(".needs-validation"); // Obtener formulario
+   const tarjet = document.getElementById("tarjeta"); // Obtener metodo de pago tarjeta de credito
+   const trans = document.getElementById("transferencia"); // Obtener metodo de pago transferencia
+   const alertMetodoPago = document.getElementById("alert-metodoPago"); // Alerta metodo de pago
+   const btnModalCart = document.getElementById("btnModalCart"); // Boton "Guardar" de metodo de pago
+ 
+   // Inputs metodo de pago
+   const inputsTipo = document.querySelectorAll(".inputTipo"); // Checkboxes de tipo de envío
+   const inputsCredito = document.querySelectorAll(".inputCredito"); // Todos los input de Tarjeta de crédito
+   const numCuenta = document.getElementById("numCuenta"); // Input numero de cuenta
+ 
+   // Deshabilitar y habilitar inputs de metodo de pago según cuál se selecciona
+   // disable = true (Habilita) = false (Deshabilita)
+          
+   /* Tarjeta de crédito */
+   tarjet.addEventListener("change", () => {
+ 
+     // Validar los inputs del metodo "Tarjeta de crédito"
+     btnModalCart.addEventListener("click", ()=> {
+      inputsCredito.forEach(input => {
+        inputValidation(input);
+      });
+     });
+ 
+     // Deshabilitar input
+     numCuenta.disabled = true;
+ 
+     // Habilitar inputs
+     inputsCredito.forEach(input => {
+      input.disabled = false;
+     });
+   });
+ 
+   /* Transferencia */
+   trans.addEventListener("change", () => {
+     
+     // Validar los inputs del metodo "Transferencia"
+     btnModalCart.addEventListener("click", ()=> {
+       inputValidation(numCuenta);
+     });
+     
+     // Deshabilitar inputs
+     inputsCredito.forEach(input => {
+      input.disabled = true;
+     });
+ 
+     // Habilitar input
+     numCuenta.disabled = false;
+   });
 
-  // Inputs metodo de pago
-  const numTarjeta = document.getElementById("numTarjeta"); // Input numero de tarjeta
-  const cvv = document.getElementById("cvv"); // Input cvv
-  const vencTarjeta = document.getElementById("vencTarjeta"); // Input vencimiento tarjeta
-  const numCuenta = document.getElementById("numCuenta"); // Input numero de cuenta
-
-  // Deshabilitar y habilitar inputs de metodo de pago según cuál se selecciona
-  // disable = true (Habilita) = false (Deshabilita)
-
-  /* Tarjeta de crédito */
-  tarjet.addEventListener("change", () => {
-    numCuenta.disabled = true;
-
-    numTarjeta.disabled = false;
-    cvv.disabled = false;
-    vencTarjeta.disabled = false;
-  });
-
-  /* Transferencia */
-  trans.addEventListener("change", () => {
-    numTarjeta.disabled = true;
-    cvv.disabled = true;
-    vencTarjeta.disabled = true;
-
-    numCuenta.disabled = false;
-  });
+  /* --- VALIDACIÓN FORMULARIO --- */
+  
+  // Todos los inputs de "Dirección de envío"
+  const inputsDireccion = document.querySelectorAll(".inputDireccion");
 
   // Evento submit del formulario
   Array.from(forms).forEach((form) => {
@@ -228,35 +253,75 @@ function totalCart() {
         if (!form.checkValidity()) {
           event.preventDefault();
           event.stopPropagation();
-          form.classList.add("was-validated");
+          
+          // Validar inputs de dirección de envío
+          inputsDireccion.forEach(input => {
+            inputValidation(input);
+          });
+
+          // Validar checkbox de tipo de envío
+          if (express.checked || premium.checked || standard.checked) {
+            // Si al menos uno está seleccionado, aplicar "is-valid" y quitar "is-invalid"
+            inputsTipo.forEach(checkbox => {
+              checkbox.classList.remove("is-invalid");
+              checkbox.classList.add("is-valid");
+            });
+          } else {
+            // Si ninguno está seleccionado, aplicar "is-invalid" y quitar "is-valid"
+            inputsTipo.forEach(checkbox => {
+              checkbox.classList.remove("is-valid");
+              checkbox.classList.add("is-invalid");
+            });
+          }
 
           // Si no está seleccionado el metodo de pago
           if (!tarjet.checked && !trans.checked) {
-            
             // Mostrar alerta "Es necesario seleccionar el metodo de pago"
             alertMetodoPago.classList.remove("d-none");
 
-            // Si está seleccionado el metodo de pago y se validan los inputs
-          } else if (
-            !(tarjet.checked && numTarjeta.value === "" && cvv.value === "" && vencTarjeta.value === "") ||
-            !(trans.checked && numCuenta.value === "")) {
-
-              // Ocultar alerta "Es necesario seleccionar el metodo de pago"
-              alertMetodoPago.classList.add("d-none");
+          // Si está seleccionado el metodo de pago y se validan los inputs
+          } else if (tarjet.checked || trans.checked) {
+            // Ocultar alerta "Es necesario seleccionar el metodo de pago"
+            alertMetodoPago.classList.add("d-none");
           }
           
         } else {
 
           // Alerta para cuando se realiza la compra con exito
-          document.getElementById("cartDiv").innerHTML += `
-            <div class="alert alert-success mt-3" role="alert">
-              ¡Has comprado con exito!
-            </div>`;
+          inputsTipo.forEach(checkbox => {checkbox.classList.remove("is-valid")});
+          inputsDireccion.forEach(input => {input.classList.remove("is-valid")});
 
-          form.classList.remove("was-validated");
+          // Ocultar alerta el finalizar la compra
+          alertMetodoPago.classList.add("d-none");
+
+          // Alerta de compra exitosa
+          document.getElementById("cartDiv").innerHTML += `
+            <div class="alert alert-success mt-3" role="alert" id="alert-cart-succes">
+              ¡Has comprado con exito!
+            </div>`
+            ;
+
+            // Metodo para que la alerta aparezca solo por 2 segundos
+            setTimeout(() => {
+              const alertSuccess = document.getElementById("alert-cart-succes");
+              if(alertSuccess){
+                alertSuccess.style.display = "none";
+              }
+            }, 2000);
         }
       },
       false
     );
   });
+
 })();
+
+// Validar input y agregar estilo según validación
+function inputValidation(input){
+  if(input.value.trim() === ""){
+    input.classList.add("is-invalid");
+  } else {
+    input.classList.remove("is-invalid");
+    input.classList.add("is-valid");
+  }
+}

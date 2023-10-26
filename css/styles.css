@@ -6,6 +6,11 @@
   --color-div-light: #ffffff; /* Color blanco para los divs principal */
   --color-div-hover-light: #fafafa; /* Color blanco en hover para los divs principal */
   --color-blue: #0087F7; /* Color para iconos, botones y links principal */
+  --font-primary: 'Poppins', sans-serif;
+}
+
+*{
+  font-family: var(--font-primary);
 }
 
 input[type=radio]:focus{

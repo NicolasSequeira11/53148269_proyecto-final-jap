@@ -4,12 +4,17 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>eMercado - Todo lo que busques está aquí</title>
-  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <!-- Tipografía Poppins de GoogleFonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- CDN Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <!-- Hojas de estilo -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <title>eMercado - Todo lo que busques está aquí</title>
 </head>
 
 <body>
@@ -58,43 +63,61 @@
         </div>
 
         <!-- Formulario de envío -->
-        <div class="col-lg-6 mt-3 order-lg-first cart-info-container">
+        <div class="col-lg-6 order-lg-first cart-info-container">
 
           <form class="d-flex flex-column needs-validation" novalidate>
 
-            <div class="d-flex flex-column mx-5">
+            <div class="d-flex flex-column mx-4">
+
+              <!-- Tipo de envío -->
               <h2 class="tituloCarrito">Tipo de envío</h2>
 
               <span class="my-1 form-check">
-                <input type="radio" name="tipoEnvio" id="premiumRad" class="form-check-input" required>
+                <input type="radio" name="tipoEnvio" id="premiumRad" class="form-check-input inputTipo" required>
                 <label for="premiumRad" class="form-check-label">Premium 2 a 5 días (15%)</label>
               </span>
 
               <span class="my-1 form-check">
-                <input type="radio" name="tipoEnvio" id="expressRad" class="form-check-input" required>
+                <input type="radio" name="tipoEnvio" id="expressRad" class="form-check-input inputTipo" required>
                 <label for="expressRad" class="form-check-label">Express 5 a 8 días (7%)</label>
               </span>
 
               <span class="my-1 form-check">
-                <input type="radio" name="tipoEnvio" id="standardRad" class="form-check-input" required>
+                <input type="radio" name="tipoEnvio" id="standardRad" class="form-check-input inputTipo" required>
                 <label for="standardRad" class="form-check-label">Standard 12 a 15 días (5%)</label>
+                  <div class="invalid-feedback mt-3">
+                    *Seleccione un tipo de envío
+                  </div>
               </span>
 
+              <!-- Dirección de envío -->
               <h2 class="tituloCarrito mb-0">Dirección de envío</h2>
               
                 <span class="my-2">
-                  <label for="calle" class="form-label">Calle</label>
-                  <input type="text" id="calle" name="calle" class="col-12 col-md-8 cart-form-input form-control" required>
+                  <label for="calle" class="form-label mb-0">Calle</label>
+                  <input type="text" id="calle" name="calle" placeholder="Dirección de domicilio"
+                    class="col-12 col-md-8 cart-form-input form-control inputDireccion" required>
+                    <div class="invalid-feedback">
+                      *Ingrese una dirección
+                    </div>
                 </span>
 
                 <span class="my-2">
-                  <label for="numero" class="form-label">Número</label>
-                  <input type="number" id="numero" name="numero" min="0" class="col-12 col-md-8 cart-form-input form-control" required>
+                  <label for="numero" class="form-label mb-0">Número</label>
+                  <input type="number" id="numero" name="numero" min="0" placeholder="Numero de puerta"
+                    class="col-12 col-md-8 cart-form-input form-control inputDireccion" required>
+                    <div class="invalid-feedback">
+                      *Ingrese un número de puerta
+                    </div>
                 </span>
               
                 <span class="my-2">
-                  <label for="esquina" class="form-label">Esquina</label>
-                  <input type="text" id="esquina" name="esquina" class="col-12 col-md-8 cart-form-input form-control" required>
+                  <label for="esquina" class="form-label mb-0">Esquina</label>
+                  <input type="text" id="esquina" name="esquina" placeholder="Esquina de su domicilio"
+                    class="col-12 col-md-8 cart-form-input form-control inputDireccion" required>
+                    <div class="invalid-feedback">
+                      *Ingrese la esquina de su domicilio
+                    </div>
                 </span>
 
               
@@ -102,12 +125,14 @@
 
             <!-- Formulario Forma de Pago -->
             
-            <div class="d-flex flex-column mx-5">
+            <div class="d-flex flex-column mx-4">
               <h2 class="tituloCarrito mb-3">Forma de Pago:</h2>
               <button type="button" class="btn btn-primary" id="modalBtn" data-bs-toggle="modal" data-bs-target="#formaPagoModal">
                 Seleccionar Forma de Pago
               </button>
-              <span class="text-danger mt-2 mx-auto d-none" id="alert-metodoPago">Es necesario seleccionar metodo de pago</span>
+              <span class="text-danger mt-1 mx-auto d-none" id="alert-metodoPago">
+                *Selecciona un metodo de pago
+              </span>
             </div>
 
               <!--Modal-->
@@ -119,43 +144,61 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body">
+
+                        <!-- Metodo de pago - Tarjeta de credito -->
                         <label for="tarjeta" class="form-check-label">
-                          <input class="form-check-input modalForm" type="radio" name="metodo" id="tarjeta" required> Tarjeta de crédito
+                          <input class="form-check-input modalForm" type="radio" name="metodo" 
+                            id="tarjeta" required> Tarjeta de crédito
                         </label>
                         <hr>
-                        <!-- Metodo de pago - Tarjeta de credito -->
-                        <div class="d-flex flex-wrap ">
-                          <label class="mx-2" for="numTarjeta">Número de Tarjeta <br>
-                            <input class="form-control form-control-sm" type="text" name="numTarjeta" id="numTarjeta" required>
-                          </label>
+                        <div class="d-flex flex-wrap container-md">
+                            <input class="form-control my-2 inputCredito"  placeholder="Número de tarjeta"
+                              type="text" name="numTarjeta" id="numTarjeta" required>
+                              <div class="invalid-feedback mt-0">
+                                *Ingrese un número de tarjeta
+                              </div>
 
-                          <label class="mx-2" for="cvv">Código de seg. (CVV)<br>
-                            <input class="form-control form-control-sm" size="10" type="text" name="cvv" id="cvv" required>
-                          </label>
+                            <input class="form-control my-2 inputCredito" placeholder="Código de seguridad (CVV)"
+                              size="10" type="text" name="cvv" id="cvv" required>
+                              <div class="invalid-feedback mt-0">
+                                *Ingrese el código de seguridad
+                              </div>
 
-                          <label class="mx-2" for="vencimientoTajeta">Vencimiento (MM/AA) <br>
-                            <input class="form-control form-control-sm" type="text" name="vencimientoTarjeta" id="vencTarjeta" required>
-                          </label>
+                            <input class="form-control my-2 inputCredito" placeholder="Vencimiento (MM/AA)"
+                              type="text" name="vencimientoTarjeta" id="vencTarjeta" required>
+                              <div class="invalid-feedback mt-0">
+                                *Ingrese la fecha de vencimiento
+                              </div>
                         </div>
                         <br>
 
                         <!-- Metodo de pago - Transferencia bancaria -->
-                        <label for="transferencia" class="form-check-label"><input class="form-check-input modalForm" type="radio" name="metodo" id="transferencia" required> Transferencia bancaria</label>
-                        <hr>
-                        <label class="mx-2" for="numCuenta">Número de cuenta <br>
-                          <input class="form-control form-control-sm" type="text" name="numCuenta" id="numCuenta" required>
+                        <label for="transferencia" class="form-check-label">
+                          <input class="form-check-input modalForm" type="radio" name="metodo" 
+                            id="transferencia" required> Transferencia bancaria
                         </label>
+                        <hr>
+                        <div class="d-flex flex-wrap container-md">
+                          <input class="form-control my-2" placeholder="Número de cuenta"
+                            type="text" name="numCuenta" id="numCuenta" required>
+                            <div class="invalid-feedback mt-0">
+                              *Ingrese un número de cuenta
+                            </div>
+                        </div>
                       </div>
+
+                      <!-- Botones Modal -->
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+                        <button type="button" class="btn btn-primary" id="btnModalCart" data-bs-dismiss="modal">Guardar</button>
                       </div>
                     </div>
                   </div>
               </div>
 
-              <div class="d-flex flex-column mx-auto mt-4">
-                <button class="btn btn-primary">Finalizar Compra</button>
+              <!-- Botón para finalizar compra -->
+              <div class="d-flex flex-column mx-auto mt-3">
+                <button class="btn btn-primary px-4">Finalizar Compra</button>
               </div>
 
           </form>
