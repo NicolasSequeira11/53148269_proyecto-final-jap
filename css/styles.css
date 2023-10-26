@@ -12,6 +12,11 @@ input[type=radio]:focus{
   outline: none;
 }
 
+input[type=text]{
+  background-color: var(--color-div-light);
+  color: var(--color-black-light);
+}
+
 body{
   background-color: var(--color-white-light);
 }
@@ -727,4 +732,22 @@ a.custom-card:hover {
 
 .article-input:focus{
   outline: none;
+}
+
+/* Modal metodo de pago */
+
+.modal{
+  color: var(--color-black-light);
+}
+
+.modal-header{
+  background-color: var(--color-div-light);
+}
+
+.modal-body{
+  background-color: var(--color-div-light);
+}
+
+.modal-footer{
+  background-color: var(--color-div-light);
 }
