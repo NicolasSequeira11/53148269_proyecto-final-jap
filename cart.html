@@ -72,7 +72,7 @@
 
               <span class="my-1 form-check">
                 <input type="radio" name="tipoEnvio" id="expressRad" class="form-check-input" required>
-                <label for="expressRad" class="form-check-label">Express 5 a 8 días (7%)<label>
+                <label for="expressRad" class="form-check-label">Express 5 a 8 días (7%)</label>
               </span>
 
               <span class="my-1 form-check">
@@ -107,6 +107,7 @@
               <button type="button" class="btn btn-primary" id="modalBtn" data-bs-toggle="modal" data-bs-target="#formaPagoModal">
                 Seleccionar Forma de Pago
               </button>
+              <span class="text-danger mt-2 mx-auto d-none" id="alert-metodoPago">Es necesario seleccionar metodo de pago</span>
             </div>
 
               <!--Modal-->
@@ -118,18 +119,32 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body">
-                        <label for="tarjeta" class="form-check-label"><input class="form-check-input modalForm" type="radio" name="metodo" id="tarjeta" required> Tarjeta de crédito</label>
+                        <label for="tarjeta" class="form-check-label">
+                          <input class="form-check-input modalForm" type="radio" name="metodo" id="tarjeta" required> Tarjeta de crédito
+                        </label>
                         <hr>
+                        <!-- Metodo de pago - Tarjeta de credito -->
                         <div class="d-flex flex-wrap ">
-                          <label class="mx-2" for="numTarjeta">Número de Tarjeta <br><input class="form-control form-control-sm" type="text" name="numTarjeta" id="numTarjeta"></label>
-                          <label class="mx-2" for="cvv">Código de seg. (CVV)<br><input class="form-control form-control-sm" size="10" type="text" name="cvv" id="cvv"></label>
-                          <label class="mx-2" for="vencimientoTajeta">Vencimiento (MM/AA) <br><input class="form-control form-control-sm" type="text" name="vencimientoTarjeta" id="vencTarjeta"></label>
+                          <label class="mx-2" for="numTarjeta">Número de Tarjeta <br>
+                            <input class="form-control form-control-sm" type="text" name="numTarjeta" id="numTarjeta" required>
+                          </label>
+
+                          <label class="mx-2" for="cvv">Código de seg. (CVV)<br>
+                            <input class="form-control form-control-sm" size="10" type="text" name="cvv" id="cvv" required>
+                          </label>
+
+                          <label class="mx-2" for="vencimientoTajeta">Vencimiento (MM/AA) <br>
+                            <input class="form-control form-control-sm" type="text" name="vencimientoTarjeta" id="vencTarjeta" required>
+                          </label>
                         </div>
                         <br>
+
+                        <!-- Metodo de pago - Transferencia bancaria -->
                         <label for="transferencia" class="form-check-label"><input class="form-check-input modalForm" type="radio" name="metodo" id="transferencia" required> Transferencia bancaria</label>
                         <hr>
-                        <label class="mx-2" for="numCuenta">Número de cuenta <br><input class="form-control form-control-sm" type="text" name="numCuenta" id="numCuenta"></label>
-                        
+                        <label class="mx-2" for="numCuenta">Número de cuenta <br>
+                          <input class="form-control form-control-sm" type="text" name="numCuenta" id="numCuenta" required>
+                        </label>
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
