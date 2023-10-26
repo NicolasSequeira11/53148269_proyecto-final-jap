@@ -4,48 +4,49 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>eMercado - Todo lo que busques está aquí</title>
-  
-  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <!-- Tipografía Poppins de GoogleFonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- CDN Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <!-- Hojas de estilo -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <style>
-    body {
-      background-color: rgb(248, 249, 250);
-    }
-  </style>
+  <title>eMercado - Todo lo que busques está aquí</title>
 </head>
 
 <body>
   <main class="mt-5">
 
-    <div class="formulario">
+    <div class="formulario container">
       
       <!-- FORMULARIO INICIO DE SESION -->
       <form class="form-comment" action="#" id="formulario">
 
-        <h1 class="title"> Iniciar Sesión </h1>
+        <img src="img/logo-jap-2022.svg" class="col-6 mx-auto my-3" alt="">
+        <h4  class="title"> Iniciar Sesión </h4>
 
         <!-- Input usuario -->
-        <label>
-          <i class="fa-solid fa-user"></i>
-          <input type="text" class="datos" placeholder="Usuario" required>
+        <label class="d-flex my-2">
+          <i class="bi bi-person-fill m-auto me-2"></i>
+          <input type="text" class="datos form-control m-auto" placeholder="Usuario" required>
         </label>
 
         <!-- Input contraseña -->
-        <label>
-          <i class="fa-solid fa-lock"></i>
-          <input type="password" class="datos" placeholder="Contraseña" required>
+        <label class="d-flex my-2">
+          <i class="bi bi-key-fill m-auto me-2"></i>
+          <input type="password" class="datos form-control m-auto" placeholder="Contraseña" required>
         </label>
 
         <!-- Checkbox recordar contraseña -->
-        <label>
+        <label class="my-2">
           <input type="checkbox" value="remember-me"> Recordar contraseña
         </label>
 
         <!-- Boton iniciar sesion -->
-        <input type="submit" value="Iniciar Sesión" class="btn">
+        <button type="submit" class="btn">Iniciar Sesión</button>
         
       </form>
       <!-- FIN FORMULARIO INICIO DE SESION -->
