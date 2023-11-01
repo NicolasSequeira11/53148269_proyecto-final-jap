@@ -44,6 +44,7 @@ function verificarLogueo() {
     display.removeAttribute("href");
     removeSesion.addEventListener("click", () => {
       sessionStorage.removeItem("logueo");
+      location.reload();
     });
   }
 }
