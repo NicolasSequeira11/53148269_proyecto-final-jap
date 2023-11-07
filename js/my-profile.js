@@ -6,6 +6,21 @@ const emailLogin = localStorage.getItem("usuario");
 
 const btnSave = document.getElementById("btnSaveProfile");
 
+//Validación del formulario
+(() => {
+    'use strict';
+  
+    const profileForm = document.getElementById('profileForm');
+  
+    profileForm.addEventListener('submit', e => {
+      if (!profileForm.checkValidity()) {
+        e.preventDefault()
+      }
+  
+      profileForm.classList.add('was-validated');
+    }, false);
+})();
+
 btnSave.addEventListener("click", ()=>{
 
     // Obtener inputs del perfil al momento del click
@@ -40,3 +55,30 @@ document.addEventListener("DOMContentLoaded", ()=>{
     profileSecondLastname.value = SecondLastname;
     profileTel.value = Tel;
 });
+
+function seleccionarFotoPerfil() {
+  const profileImageInput = document.getElementById('profileImageInput');
+  const profileImage = document.getElementById('profileImage');
+  const selectedProfileImage = document.getElementById('selectedProfileImage');
+
+  profileImageInput.addEventListener('change', function () {
+      const file = profileImageInput.files[0];
+
+      if (file) {
+          const reader = new FileReader();
+
+          reader.onload = function (e) {
+              // Mostrar la imagen seleccionada en la etiqueta <i>
+
+              selectedProfileImage.style.display = 'block'; // Mostrar la imagen seleccionada
+              selectedProfileImage.src = e.target.result;
+          };
+
+          reader.readAsDataURL(file);
+      }
+  });
+}
+
+
+  
+
