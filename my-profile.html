@@ -72,18 +72,19 @@
     <div class="container">
       <section class="d-flex d-flex flex-column flex-md-row container-lg py-5">
         <div class="col-md-3 my-auto m-md-auto d-flex ps-lg-5 flex-column">
-          <div class="col-12 d-flex justify-content-center align-items-center rounded-circle">
-            <input type="file" id="profileImageInput" style="display:none" accept="image/" onclick="seleccionarFotoPerfil()">
-            <label for="profileImageInput" class="cursor-pointer">
-              <!-- <i class="bi-person-add p-4 bg-primary fa-7x rounded-circle d-flex mx-auto text-white" id="profileImage"></i> -->
-              <img class="img-fluid rounded-circle" id="selectedProfileImage" src="https://icons.iconarchive.com/icons/papirus-team/papirus-status/512/avatar-default-icon.png" alt="Avatar" style="width: 140px; height: 140px; object-fit: cover;">
+          <div class="col-12 d-flex justify-content-center align-content-between rounded-circle">
+            <input type="file" id="profileImageInput" style="display:none" accept="image/*" onclick="seleccionarFotoPerfil()">
+            <label for="profileImageInput" class="cursor-active align-items-center">
+              <img class="img-fluid rounded-circle" id="selectedProfileImage" src="https://cdn.icon-icons.com/icons2/3217/PNG/512/add_user_profile_person_avatar_icon_196535.png" alt="Avatar" style="width: 140px; height: 140px; object-fit: cover;">
+              <span>Seleccinar imagen</span>
             </label>
-            
           </div>
           <!-- Boton cerrar sesión  -->
-          <button class="btn bg-danger text-white m-auto mt-4" id="removeSesion" type="button">
-            Cerrar sesión
-          </button>
+          <div class="justify-content-center">
+            <button class="btn bg-danger text-white m-auto mt-4" id="removeSesion" type="button">
+              Cerrar sesión
+            </button>
+          </div>
         </div>
         <!-- Inputs datos perfil -->
         <div class="col-md-9 d-flex m-auto justify-content-center flex-wrap">
@@ -101,7 +102,7 @@
               <div class="col-md-5 m-3">
                 <label for="">Primer apellido*</label>
                 <input type="text" id="profileFirstLastname" class="form-control form-control-lg" required>
-                <div class="invalid-feedback">Es necesario agregar apellido</div>
+                <div class="invalid-feedback">Es necesario agregar un apellido</div>
               </div>
               <div class="col-md-5 m-3">
                 <label for="">Segundo apellido</label>
