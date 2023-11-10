@@ -332,6 +332,10 @@ a.custom-card:hover {
   justify-content: end;
 }
 
+.navbar-toggler{
+  color: var(--color-black-light);
+}
+
 .navbar-collapse{
   margin: auto;
   justify-content: end;
@@ -755,4 +759,18 @@ a.custom-card:hover {
 
 .modal-footer{
   background-color: var(--color-div-light);
+}
+
+/* PERFIL */
+
+.perfil-addImage{
+  color: var(--color-black-light);
+}
+
+.perfil-addImage:hover{
+  color: var(--color-blue);
+}
+
+.perfil-labelInputs{
+  color: var(--color-black-light);
 }
