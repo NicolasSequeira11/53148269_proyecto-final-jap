@@ -6,10 +6,11 @@ const emailLogin = localStorage.getItem("usuario");
 
 const btnSave = document.getElementById("btnSaveProfile");
 
-//Validación del formulario
+const defaultImageURL = "https://cdn.icon-icons.com/icons2/3217/PNG/512/add_user_profile_person_avatar_icon_196535.png";
+
+//Validación del formulario con boostrap
 (() => {
     'use strict';
-  
     const profileForm = document.getElementById('profileForm');
   
     profileForm.addEventListener('submit', e => {
@@ -35,6 +36,18 @@ btnSave.addEventListener("click", ()=>{
     localStorage.setItem("FirstLastName", profileFirstLastname);
     localStorage.setItem("SecondLastName", profileSecondLastname);
     localStorage.setItem("Tel", profileTel);
+
+    // Recuperar la imagen seleccionada
+    const selectedProfileImage = document.getElementById("selectedProfileImage");
+    const storedImage = localStorage.getItem("profileImage");
+
+    if (storedImage) {
+        selectedProfileImage.style.display = "block";
+        selectedProfileImage.src = storedImage;
+    } else {
+        // Si no hay imagen en localStorage, mostrar la imagen predeterminada
+        selectedProfileImage.src = defaultImageURL;
+    }
 })
 
 // Obtener datos del perfil del localStorage
@@ -43,6 +56,8 @@ const SecondName = localStorage.getItem("SecondName");
 const FirstLastname = localStorage.getItem("FirstLastName");
 const SecondLastname = localStorage.getItem("SecondLastName");
 const Tel = localStorage.getItem("Tel");
+const imagenProfile = localStorage.getItem("profileImage");
+const imgProfile = document.getElementById("selectedProfileImage");
 
 
 
@@ -54,31 +69,29 @@ document.addEventListener("DOMContentLoaded", ()=>{
     profileFirstLastname.value = FirstLastname;
     profileSecondLastname.value = SecondLastname;
     profileTel.value = Tel;
+    imgProfile.setAttribute("src", imagenProfile);
 });
 
+//Función para previsualizar la foto seleccionada por el usuario
 function seleccionarFotoPerfil() {
-  const profileImageInput = document.getElementById('profileImageInput');
-  const profileImage = document.getElementById('profileImage');
-  const selectedProfileImage = document.getElementById('selectedProfileImage');
+  const profileImageInput = document.getElementById("profileImageInput");
+  const selectedProfileImage = document.getElementById("selectedProfileImage");
 
-  profileImageInput.addEventListener('change', function () {
-      const file = profileImageInput.files[0];
+  profileImageInput.addEventListener("change", function () {
+    const file = profileImageInput.files[0];
 
-      if (file) {
-          const reader = new FileReader();
+    if (file) {
+      const reader = new FileReader();
 
-          reader.onload = function (e) {
-              // Mostrar la imagen seleccionada en la etiqueta <i>
+      reader.onload = function (e) {
+        imagenSeleccionada = e.target.result;// Guardar la imagen actual en una variable
+        selectedProfileImage.src = imagenSeleccionada;
+        selectedProfileImage.style.display = "block"; //Mostrar la imagen seleccionada
 
-              selectedProfileImage.style.display = 'block'; // Mostrar la imagen seleccionada
-              selectedProfileImage.src = e.target.result;
-          };
+        localStorage.setItem("profileImage", imagenSeleccionada); //Guardar la imagen en localStorage 
+      };
 
-          reader.readAsDataURL(file);
-      }
+      reader.readAsDataURL(file);
+    }
   });
 }
-
-
-  
-
