@@ -1,12 +1,7 @@
-// Obtener input mail
-const profileEmail = document.getElementById("profileEmail");
 
-// Obtener el email con el que se loguea
-const emailLogin = localStorage.getItem("usuario");
-
-const btnSave = document.getElementById("btnSaveProfile");
-
-const defaultImageURL = "https://cdn.icon-icons.com/icons2/3217/PNG/512/add_user_profile_person_avatar_icon_196535.png";
+const profileEmail = document.getElementById("profileEmail"); // Obtener input mail
+const emailLogin = localStorage.getItem("usuario"); // Obtener el email con el que se loguea
+const btnSave = document.getElementById("btnSaveProfile"); // Boton Guardar cambios
 
 // Obtener datos del perfil del localStorage
 const FirstName = localStorage.getItem("FirstName");
@@ -95,17 +90,6 @@ btnSave.addEventListener("click", ()=>{
   localStorage.setItem("profileImage", imagenSeleccionada); 
   imgProfile.setAttribute("src", imagenProfile);
 
-  // Recuperar la imagen seleccionada
-  const selectedProfileImage = document.getElementById("selectedProfileImage");
-  const storedImage = localStorage.getItem("profileImage");
-
-  if (storedImage) {
-      selectedProfileImage.style.display = "block";
-      selectedProfileImage.src = storedImage;
-  } else {
-      // Si no hay imagen en localStorage, mostrar la imagen predeterminada
-      selectedProfileImage.src = defaultImageURL;
-  }
 });
 
 }
