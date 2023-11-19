@@ -1,5 +1,7 @@
-const express = require('express');
+const express = require("express");
 const app = express();
+const jwt = require("jsonwebtoken");
+const SECRET_KEY = "CLAVE ULTRA SECRETA";
 
 app.use(express.json());
 const port = 3000; // Puedes cambiar el puerto si es necesario
@@ -7,7 +9,17 @@ const port = 3000; // Puedes cambiar el puerto si es necesario
 app.get("/", (req, res) => {
     // El primer parámetro SIEMPRE es asociado a la request (petición) y el segundo a la response (respuesta)
     res.send("<h1>Bienvenid@ al servidor</h1>");
-  });
+});
+
+app.post("/login", (req, res) => {
+    const {username, password} = req.body;
+    if(username==="admin" && password==="admin"){
+        const token = jwt.sign({username}, SECRET_KEY);
+        res.status(200).json({token});
+    } else {
+        res.status(401).json({message:"Usuario y/o contraseña incorrecta."});
+    }
+});
 
 // Devolver json de cart
 let cart = require("../json/cart/buy.json");
