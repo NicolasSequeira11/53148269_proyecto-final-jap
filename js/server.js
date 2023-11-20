@@ -2,13 +2,48 @@ const express = require("express");
 const app = express();
 const jwt = require("jsonwebtoken");
 const SECRET_KEY = "CLAVE ULTRA SECRETA";
+const cors = require("cors");
+
+const mariadb = require("mariadb");
+
+const pool = mariadb.createPool({
+    host: "localhost", 
+    user: "root", 
+    password: "1234", 
+    database: "articles", 
+    connectionLimit: 5
+  });
 
 app.use(express.json());
+app.use(cors({origin: '*'}));
+
 const port = 3000; // Puedes cambiar el puerto si es necesario
 
 app.get("/", (req, res) => {
     // El primer parámetro SIEMPRE es asociado a la request (petición) y el segundo a la response (respuesta)
     res.send("<h1>Bienvenid@ al servidor</h1>");
+});
+
+
+app.post("/cart", async (req, res) => { 
+    let conn;
+    try {
+      conn = await pool.getConnection();
+      console.log('Conexión a la base de datos establecida correctamente');
+  
+      const response = await conn.query(
+        `INSERT INTO cart( id, name, count, unitCost, currency, image) 
+         VALUES(?, ?, ?, ?, ?, ?)`,
+        [req.body.id, req.body.name, req.body.count, req.body.unitCost, req.body.currency, req.body.image]);
+      
+      res.json({...req.body});
+  
+    }catch(error){
+        console.error('Error en la base de datos:', error);
+      res.status(500).json({message: "se rompio el servidor"})
+    } finally {
+      if (conn) conn.release(); //release to pool
+    }
 });
 
 app.post("/login", (req, res) => {

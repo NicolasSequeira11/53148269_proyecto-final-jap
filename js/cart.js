@@ -1,6 +1,7 @@
 const urlCart = "https://japceibal.github.io/emercado-api/user_cart/25801.json"; // URL con los JSON de los productos
 const containerCart = document.getElementById("containerCart"); // Contenedor del carrito
 
+
 fetch(urlCart)
   .then((response) => response.json())
   .then((data) => {
