@@ -128,7 +128,8 @@ function showProductInfo(array) {
             <p class="card-soldcount soldCount-product-info"><strong>Cantidad de vendidos</strong> <br> ${array.soldCount}</p>
             <p class="card-cost cost-product-info"><strong>Precio</strong> <br> ${array.currency} ${array.cost}</p>
             <button class="button-product-info" 
-              onclick="addToCart('${array.name}', ${array.cost}, '${array.images[0]}');">Añadir al carrito</button>
+              onclick="
+              addToCart('${array.name}', ${array.cost}, '${array.images[0]}', '${array.id}');">Añadir al carrito</button>
         </div>
     </div>
   `;
@@ -176,18 +177,30 @@ function getProdsRela (arr){
   });
 }
 
-function addToCart(name, cost, image) {
+//Funcion para agregar productos a carrito
+function addToCart(name, cost, image, id) {
   // Obtener el carrito actual desde el `localStorage`
   let currentCart = JSON.parse(localStorage.getItem('cart')) || [];
 
   // Crear un nuevo artículo
   const newArticle = {
+      id: id,
       name: name,
       unitCost: cost,
       currency: 'USD',
       image: image,
       count: 1 
   };
+
+  //Fetch POST para agregar productos a la base de datos
+  fetch('http://localhost:3000/cart', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(newArticle),
+      })
+  .then((response) => response.json())    
 
   // Agregar el nuevo artículo al carrito
   currentCart.push(newArticle);
