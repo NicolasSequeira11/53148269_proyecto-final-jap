@@ -46,16 +46,6 @@ app.post("/cart", async (req, res) => {
     }
 });
 
-app.post("/login", (req, res) => {
-    const {username, password} = req.body;
-    if(username==="admin" && password==="admin"){
-        const token = jwt.sign({username}, SECRET_KEY);
-        res.status(200).json({token});
-    } else {
-        res.status(401).json({message:"Usuario y/o contraseña incorrecta."});
-    }
-});
-
 // Devolver json de cart
 let cart = require("../json/cart/buy.json");
 app.get("/json/cart", (req, res) => {
