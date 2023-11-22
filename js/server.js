@@ -103,3 +103,34 @@ app.get('/json/user_cart', (req, res) => {
 app.listen(port, () => {
     console.log(`Servidor escuchando en http://localhost:${port}`);
 });
+
+const jwt = require('jsonwebtoken');
+const SECRET_KEY = 'clave_ultra_secreta' 
+
+// Ruta de inicio de sesión 
+app.post("/login", (req, res) => {
+  const { username, password } = req.body; // Recibe en el body dela solicitud username y password
+
+    // Verifica las credenciales y devuelve un token JWT si son válidas
+  if (username === "admin" && password === "admin") {
+    const token = jwt.sign({ username }, SECRET_KEY);
+    res.status(200).json({ token });
+  } else {
+    //Devuelve un mensaje de error si las credenciales son incorrectas
+    res.status(401).json({ message: "Usuario y/o contraseña incorrectos" }); 
+  }
+});
+
+// Ruta "/json/cart" con el middleware directamente aplicado
+app.get("/json/cart", (req, res) => {
+    try {
+      // Verificar la validez del token en el encabezado
+      const decoded = jwt.verify(req.headers["access-token"], SECRET_KEY);
+      //Cargar y  devolver el contenido del carrito como respuesta
+      let cart = require("../json/cart/buy.json");
+      res.json(cart);
+    } catch (err) {
+      // Devolver un mensaje de error si el token no es válido
+      res.status(401).json({ message: "Usted no tiene acceso" });
+    }
+  });
