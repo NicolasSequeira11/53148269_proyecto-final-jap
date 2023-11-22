@@ -105,7 +105,6 @@ app.listen(port, () => {
 });
 
 const jwt = require('jsonwebtoken');
-const SECRET_KEY = 'clave_ultra_secreta' 
 
 // Ruta de inicio de sesión 
 app.post("/login", (req, res) => {
