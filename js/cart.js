@@ -1,5 +1,7 @@
 const urlCart = "https://japceibal.github.io/emercado-api/user_cart/25801.json"; // URL con los JSON de los productos
 const containerCart = document.getElementById("containerCart"); // Contenedor del carrito
+const spanCart = document.getElementById("spanCart"); // Span cantidad productos carrito en el icono del nav
+const iconCart = document.getElementById("iconCart");
 
 
 fetch(urlCart)
@@ -7,12 +9,31 @@ fetch(urlCart)
   .then((data) => {
     const localStorageCart = JSON.parse(localStorage.getItem("cart")); // Datos del localStorage
 
+    spanCart.innerHTML = cantidadCart(localStorageCart);
     showArticles(localStorageCart);
     totalCart();
+    cantidadCart(localStorageCart);
   })
   .catch((error) => {
     console.error("Error al cargar los productos:", error);
-  });
+});
+
+// Contador de productos del carrito
+function cantidadCart(array) {
+  let contadorCart = 0;
+  
+  for (let i = 0; i < array.length; i++) {
+    contadorCart += 1;
+    spanCart.classList.add("cartAnimation");
+  }
+
+  if(array.length < 10){
+    return contadorCart;
+  } else {
+    return "+9";
+  }
+
+}
 
 function showArticles(array) {
   if (array.length > 0) {

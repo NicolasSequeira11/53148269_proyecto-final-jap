@@ -207,6 +207,7 @@ function addToCart(name, cost, image, id) {
 
   // Guardar el carrito actualizado en el `localStorage`
   localStorage.setItem('cart', JSON.stringify(currentCart));
+  location.reload();
 }
 
 
