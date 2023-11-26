@@ -46,12 +46,6 @@ app.post("/cart", async (req, res) => {
     }
 });
 
-// Devolver json de cart
-let cart = require("../json/cart/buy.json");
-app.get("/json/cart", (req, res) => {
-    res.json(cart);
-});
-
 //Devolver json de cats
 let cats = require("../json/cats/cat.json");
 app.get('/json/cats', (req, res) => {
@@ -94,7 +88,6 @@ app.listen(port, () => {
     console.log(`Servidor escuchando en http://localhost:${port}`);
 });
 
-const jwt = require('jsonwebtoken');
 
 // Ruta de inicio de sesión 
 app.post("/login", (req, res) => {
